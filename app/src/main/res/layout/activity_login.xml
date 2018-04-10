@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cinema.avans.cinemaapp.frontEnd.presentation.logIn.MainActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/logInGuideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/logInGuideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.16" />
+
+    <EditText
+        android:id="@+id/registerUsernameInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/enterUsernameWithDots"
+        android:nextFocusForward="@+id/registerPasswordConfirmInput"
+        app:layout_constraintEnd_toEndOf="@+id/logInDevider"
+        app:layout_constraintStart_toStartOf="@+id/logInLogInInfo"
+        app:layout_constraintTop_toBottomOf="@+id/logInLogInInfo" />
+
+
+    <EditText
+        android:id="@+id/registerPasswordConfirmInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="@string/enterPasswordWithDots"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/logInDevider"
+        app:layout_constraintStart_toStartOf="@+id/registerUsernameInput"
+        app:layout_constraintTop_toBottomOf="@+id/registerUsernameInput" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/logIn"
+        app:layout_constraintStart_toStartOf="@+id/logInLogInInfo"
+        app:layout_constraintTop_toBottomOf="@+id/registerPasswordConfirmInput" />
+
+    <TextView
+        android:id="@+id/longInForgetLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/forgotPassword"
+        app:layout_constraintStart_toStartOf="@+id/longInRegisterLink"
+        app:layout_constraintTop_toBottomOf="@+id/longInRegisterLink" />
+
+    <ImageView
+        android:id="@+id/loginLogo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/logInGuideline1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cinema" />
+
+    <TextView
+        android:id="@+id/longInRegisterLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/createAnAccount"
+        app:layout_constraintStart_toStartOf="@+id/loginButton"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+
+    <TextView
+        android:id="@+id/logInLogInInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/logIn"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/logInGuideline2"
+        app:layout_constraintTop_toBottomOf="@+id/loginLogo" />
+
+    <ImageView
+        android:id="@+id/logInDevider"
+        android:layout_width="250dp"
+        android:layout_height="2dp"
+        app:layout_constraintStart_toStartOf="@+id/logInLogInInfo"
+        app:layout_constraintTop_toBottomOf="@+id/logInLogInInfo"
+        app:srcCompat="@color/colorWhite" />
+
+    <ProgressBar
+        android:id="@+id/logInProg"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/loginButton"
+        app:layout_constraintStart_toEndOf="@+id/loginButton"
+        app:layout_constraintTop_toTopOf="@+id/loginButton" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cinema.avans.cinemaapp.frontEnd.presentation.register.RegisterActivity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/registerGuideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/registerGuideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.16" />
+
+    <ImageView
+        android:id="@+id/registerLogo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/registerGuideline1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cinema" />
+
+    <EditText
+        android:id="@+id/registerUsernameInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/enterAUserNameWithDots"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/registerDevider"
+        app:layout_constraintStart_toStartOf="@+id/registerCreateInfo"
+        app:layout_constraintTop_toBottomOf="@+id/registerCreateInfo" />
+
+    <EditText
+        android:id="@+id/registerPasswordInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="@string/enterAPasswordWithDots"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/registerDevider"
+        app:layout_constraintStart_toStartOf="@+id/registerUsernameInput"
+        app:layout_constraintTop_toBottomOf="@+id/registerUsernameInput" />
+
+    <EditText
+        android:id="@+id/registerPasswordConfirmInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="@string/confirmPasswordWithDots"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/registerDevider"
+        app:layout_constraintStart_toStartOf="@+id/registerUsernameInput"
+        app:layout_constraintTop_toBottomOf="@+id/registerPasswordInput" />
+
+    <Button
+        android:id="@+id/registerRegisterButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="@+id/registerCreateInfo"
+        app:layout_constraintTop_toBottomOf="@+id/registerPasswordConfirmInput"
+        tools:text="@string/register" />
+
+    <TextView
+        android:id="@+id/registerCreateInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/createAnAccount"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/registerGuideline2"
+        app:layout_constraintTop_toBottomOf="@+id/registerLogo" />
+
+    <ImageView
+        android:id="@+id/registerDevider"
+        android:layout_width="250dp"
+        android:layout_height="2dp"
+        app:layout_constraintStart_toStartOf="@+id/registerCreateInfo"
+        app:layout_constraintTop_toBottomOf="@+id/registerCreateInfo"
+        app:srcCompat="@android:color/white" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="25dp">
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/selectorHallGridView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:columnWidth="30dp"
+        android:gravity="center"
+        android:horizontalSpacing="5dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/selectorOkButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectorReservedInfo" />
+
+    <TextView
+        android:id="@+id/selectorAvailableInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/AVAILABLE"
+        app:layout_constraintBottom_toBottomOf="@+id/selectorAvailableColor"
+        app:layout_constraintStart_toEndOf="@+id/selectorAvailableColor"
+        app:layout_constraintTop_toTopOf="@+id/selectorAvailableColor" />
+
+    <ImageView
+        android:id="@+id/selectorAvailableColor"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@color/available" />
+
+    <TextView
+        android:id="@+id/selectorReservedInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/RESERVED"
+        app:layout_constraintBottom_toBottomOf="@+id/selectorAvailableColor"
+        app:layout_constraintStart_toEndOf="@+id/selectorReservedColor"
+        app:layout_constraintTop_toTopOf="@+id/selectorAvailableColor" />
+
+    <ImageView
+        android:id="@+id/selectorReservedColor"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/selectorAvailableColor"
+        app:layout_constraintStart_toEndOf="@+id/selectorAvailableInfo"
+        app:layout_constraintTop_toTopOf="@+id/selectorAvailableColor"
+        app:srcCompat="@color/reserved" />
+
+    <TextView
+        android:id="@+id/selectorSelectedInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/SELECTED"
+        app:layout_constraintBottom_toBottomOf="@+id/selectorSelectedColor"
+        app:layout_constraintStart_toEndOf="@+id/selectorSelectedColor"
+        app:layout_constraintTop_toTopOf="@+id/selectorSelectedColor" />
+
+    <ImageView
+        android:id="@+id/selectorSelectedColor"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/selectorAvailableColor"
+        app:layout_constraintStart_toEndOf="@+id/selectorReservedInfo"
+        app:layout_constraintTop_toTopOf="@+id/selectorAvailableColor"
+        app:srcCompat="@color/selected" />
+
+    <Button
+        android:id="@+id/selectorOkButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/ok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/selectorStepInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/stepOneChooseSeats"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/selectorCapacityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@+id/selectorStepInfo"
+        app:layout_constraintTop_toBottomOf="@+id/selectorStepInfo"
+        tools:text="Total capcity: 120" />
+
+    <TextView
+        android:id="@+id/selectorAvailableText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/selectorCapacityText"
+        app:layout_constraintTop_toBottomOf="@+id/selectorCapacityText"
+        tools:text="Available seats: 67" />
+
+    <Spinner
+        android:id="@+id/selectorAmountOfSeatsSpinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectorHowManySeatsInfo" />
+
+    <TextView
+        android:id="@+id/selectorHowManySeatsInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/howManySeatsUWant"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectorAvailableText" />
+
+    <ImageView
+        android:id="@+id/selectorScreenImage"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/selectorOkButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@color/colorWhite" />
+
+    <ImageView
+        android:id="@+id/selectorDevider"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        app:layout_constraintStart_toStartOf="@+id/selectorStepInfo"
+        app:layout_constraintTop_toBottomOf="@+id/selectorStepInfo"
+        app:srcCompat="@color/colorWhite" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/whereDoYouWantToSit"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectorAmountOfSeatsSpinner" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- When nav bar item is checked -->
+    <item android:color="@color/colorWhite"
+        android:state_checked="true"/>
+
+    <!-- When nav bar item is not checked -->
+    <item android:color="@color/colorWhiteTransparent"/>
+
+</selector>
