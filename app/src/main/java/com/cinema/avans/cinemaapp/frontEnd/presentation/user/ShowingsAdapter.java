@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.cinema.avans.cinemaapp.R;
+import com.cinema.avans.cinemaapp.frontEnd.domain.cinema.Date;
 import com.cinema.avans.cinemaapp.frontEnd.domain.cinema.Showing;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class ShowingsAdapter extends ArrayAdapter<Showing> {
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
         Showing showing = getItem(position);
+        Date date = showing.getDate();
 
         if (convertView == null) {
 
@@ -36,12 +38,11 @@ public class ShowingsAdapter extends ArrayAdapter<Showing> {
 
         }
 
-        if (showing != null) {
+        TextView showingDate = convertView.findViewById(R.id.showingListDate);
+        TextView showingTime = convertView.findViewById(R.id.showingListTime);
 
-            TextView showingDate = convertView.findViewById(R.id.showingListDate);
-            showingDate.setText(showing.getDate().getDate());
-
-        }
+        showingDate.setText(date.getDateString());
+        showingTime.setText(date.getTimeString());
 
         return convertView;
 

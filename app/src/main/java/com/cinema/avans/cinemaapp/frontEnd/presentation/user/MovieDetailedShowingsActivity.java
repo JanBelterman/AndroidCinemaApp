@@ -15,8 +15,10 @@ import com.cinema.avans.cinemaapp.frontEnd.domain.cinema.Movie;
 import com.cinema.avans.cinemaapp.frontEnd.domain.cinema.Showing;
 import com.cinema.avans.cinemaapp.frontEnd.domain.login.User;
 import com.cinema.avans.cinemaapp.frontEnd.logic.user.SeatSelector;
+import com.cinema.avans.cinemaapp.frontEnd.logic.user.ShowingsComparator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by JanBelterman on 04 April 2018
@@ -39,14 +41,18 @@ public class MovieDetailedShowingsActivity extends AppCompatActivity {
 
         Log.i("MovieDetailedShowAct", "User gotten: " + user);
 
-        if (movie.getShowings().size() == 0) {
+        // Get showings
+        ArrayList<Showing> showings = movie.getShowings();
+        // Sort showings
+        Collections.sort(showings, new ShowingsComparator());
+        // Check if movie has no showings and alert user
+        if (showings.size() == 0) {
             Toast.makeText(getApplicationContext(), "No showings for: " + movie.getTitle(), Toast.LENGTH_LONG).show();
 
         }
-
-        // fix Sorter for time
+        // Setup adapter
         ListView movieShowingsListView = findViewById(R.id.detailedMovieShowingsListView);
-        final ShowingsAdapter showingsAdapter = new ShowingsAdapter(getApplicationContext(), movie.getShowings());
+        final ShowingsAdapter showingsAdapter = new ShowingsAdapter(getApplicationContext(), showings);
         movieShowingsListView.setAdapter(showingsAdapter);
 
         movieShowingsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

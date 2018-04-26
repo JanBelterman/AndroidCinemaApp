@@ -55,21 +55,67 @@ public class Date implements Serializable {
     }
 
     // GETTERS
-//    public int getDay() {
-//        return day;
-//    }
-//    public int getMonth() {
-//        return month;
-//    }
-//    public int getYear() {
-//        return year;
-//    }
-//    public int getHours() {
-//        return hours;
-//    }
-//    public int getMinutes() {
-//        return minutes;
-//    }
+    public int getDay() {
+        return day;
+    }
+    public int getMonth() {
+        return month;
+    }
+    public int getYear() {
+        return year;
+    }
+    public int getHours() {
+        return hours;
+    }
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public String getDateString() {
+
+        return getMonthString(month) + " " + day;
+
+    }
+
+    public String getTimeString() {
+
+        String hoursPart = String.valueOf(hours);
+        String minutesPart = String.valueOf(minutes);
+
+        if (hours == 0) {
+            hoursPart += "0";
+        }
+
+        if (minutes == 0) {
+            minutesPart += "0";
+        }
+
+        return hoursPart + ":" + minutesPart;
+
+    }
+
+    private String getMonthString(int month) {
+
+        switch (month) {
+
+            case 1: return "January";
+            case 2: return "February";
+            case 3: return "March";
+            case 4: return "April";
+            case 5: return "May";
+            case 6: return "June";
+            case 7: return "July";
+            case 8: return "August";
+            case 9: return "September";
+            case 10: return "October";
+            case 11: return "November";
+            case 12: return "December";
+
+        }
+
+        return "";
+
+    }
 
     public String getDate() {
         return year + "-" + month + "-" + day + "-" + hours + "-" + minutes;

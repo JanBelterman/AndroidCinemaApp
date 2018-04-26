@@ -1,5 +1,6 @@
 package com.cinema.avans.cinemaapp.frontEnd.presentation.user;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.FrameLayout;
 import com.cinema.avans.cinemaapp.R;
 import com.cinema.avans.cinemaapp.frontEnd.dataAcces.RepositoryFactory;
 import com.cinema.avans.cinemaapp.frontEnd.domain.login.User;
+import com.cinema.avans.cinemaapp.frontEnd.presentation.logIn.MainActivity;
 
 /**
  * Created by JanBelterman on 04 April 2018
@@ -83,11 +85,17 @@ public class UserHubActivity extends AppCompatActivity {
 
         // Fix transition orientation
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
         fragmentTransaction.replace(R.id.userHubFrame, fragment);
         fragmentTransaction.addToBackStack(fragment.getTag());
         fragmentTransaction.commit();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(UserHubActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
 }
