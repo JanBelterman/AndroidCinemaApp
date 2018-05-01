@@ -53,8 +53,8 @@
         android:hint="@string/enterAPasswordWithDots"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/registerDevider"
-        app:layout_constraintStart_toStartOf="@+id/registerUsernameInput"
-        app:layout_constraintTop_toBottomOf="@+id/registerUsernameInput" />
+        app:layout_constraintStart_toStartOf="@+id/loginUsernameInput"
+        app:layout_constraintTop_toBottomOf="@+id/loginUsernameInput" />
 
     <EditText
         android:id="@+id/registerPasswordConfirmInput"
@@ -65,7 +65,7 @@
         android:hint="@string/confirmPasswordWithDots"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/registerDevider"
-        app:layout_constraintStart_toStartOf="@+id/registerUsernameInput"
+        app:layout_constraintStart_toStartOf="@+id/loginUsernameInput"
         app:layout_constraintTop_toBottomOf="@+id/registerPasswordInput" />
 
     <Button
@@ -75,7 +75,7 @@
         android:layout_marginTop="8dp"
         android:text="Button"
         app:layout_constraintStart_toStartOf="@+id/registerCreateInfo"
-        app:layout_constraintTop_toBottomOf="@+id/registerPasswordConfirmInput"
+        app:layout_constraintTop_toBottomOf="@+id/loginPasswordInput"
         tools:text="@string/register" />
 
     <TextView

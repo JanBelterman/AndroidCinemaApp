@@ -84,6 +84,10 @@
     <string name="actors">Actors</string>
     <string name="genre">Genre</string>
     <string name="production">Production</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="seat">Seat</string>
+    <string name="row">Row</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

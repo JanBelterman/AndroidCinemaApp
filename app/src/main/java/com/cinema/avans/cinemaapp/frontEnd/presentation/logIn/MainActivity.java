@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,13 +33,33 @@ public class MainActivity extends AppCompatActivity implements LogInActivity, Us
     private TextView usernameInput;
     private TextView passwordInput;
 
+    private ImageView loginLogo;
+    private ProgressBar loginLoader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        stopLoader();
+        setupActivity();
+
+        setUpButtons();
+
+    }
+
+    private void setupActivity() {
+
+        // Get views
+        loginLogo = findViewById(R.id.loginLogo);
+
+        loginLoader = findViewById(R.id.loginLoader);
+        loginLoader.setVisibility(View.GONE);
+        loginLoader.setScaleX(0);
+        loginLoader.setScaleY(0);
+
+        usernameInput = findViewById(R.id.loginUsernameInput);
+        passwordInput = findViewById(R.id.loginPasswordInput);
 
         //  Setup manager
         this.logInManager = new LogInManager(
@@ -45,12 +67,6 @@ public class MainActivity extends AppCompatActivity implements LogInActivity, Us
                 ,new RepositoryFactory(getApplicationContext()));
 
         insertFakeBackendDataToDatabase();
-
-        setUpButtons();
-
-        // Setup views
-        usernameInput = findViewById(R.id.registerUsernameInput);
-        passwordInput = findViewById(R.id.registerPasswordConfirmInput);
 
     }
 
@@ -76,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements LogInActivity, Us
     private void setUpButtons() {
 
         // Setup buttons
-        Button logInButton = findViewById(R.id.loginButton);
+        Button logInButton = findViewById(R.id.loginLoginButton);
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements LogInActivity, Us
             }
         });
 
-        TextView registerText = findViewById(R.id.longInRegisterLink);
+        TextView registerText = findViewById(R.id.loginRegisterLink);
         registerText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,8 +154,6 @@ public class MainActivity extends AppCompatActivity implements LogInActivity, Us
     @Override
     public void userGotten(User user) {
 
-        stopLoader();
-
         // Go to movie list screen for user
         Intent intent = new Intent(MainActivity.this, UserHubActivity.class);
         intent.putExtra("USER", user);
@@ -149,15 +163,9 @@ public class MainActivity extends AppCompatActivity implements LogInActivity, Us
 
     private void startLoader() {
 
-        ProgressBar progressBar = findViewById(R.id.logInProg);
-        progressBar.setVisibility(View.VISIBLE);
-
-    }
-
-    private void stopLoader() {
-
-        ProgressBar progressBar = findViewById(R.id.logInProg);
-        progressBar.setVisibility(View.GONE);
+        loginLogo.animate().scaleX(0).scaleY(0).rotation(720).setDuration(750);
+        loginLoader.setVisibility(View.VISIBLE);
+        loginLoader.animate().scaleX(1).scaleY(1).setDuration(1000);
 
     }
 

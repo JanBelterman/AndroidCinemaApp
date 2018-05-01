@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#00303f9f</color>
-    <color name="colorAccent">#FF4081</color>
+    <!-- App theme -->
+    <color name="colorPrimary">#f99a16</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#f99a16</color>
+
+    <!-- Login button -->
+    <color name="enabled">#FFC107</color>
+    <color name="pressed">#FFD54F</color>
     
     <!-- Colors for navigation bar -->
-    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhite">#FFFFFF</color>
     <color name="colorWhiteTransparent">#80ffffff</color>
 
     <!-- Colors to display selector information -->
@@ -14,6 +19,8 @@
     <color name="reserved">#dc4040</color>
     <color name="selected">#64aed6</color>
     <color name="gap">#00303f9f</color>
+
+    <!-- ?? -->
     <color name="colorTextMedium">#dcdcdc</color>
 
 </resources>

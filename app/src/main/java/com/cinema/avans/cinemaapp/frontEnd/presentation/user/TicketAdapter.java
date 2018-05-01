@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.cinema.avans.cinemaapp.R;
+import com.cinema.avans.cinemaapp.frontEnd.domain.cinema.Date;
 import com.cinema.avans.cinemaapp.frontEnd.domain.cinema.Ticket;
 
 import java.util.ArrayList;
@@ -44,11 +45,20 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
             TextView movieText = convertView.findViewById(R.id.ticketItemMovieText);
             movieText.setText(ticket.getShowing().getMovie().getTitle());
             TextView hallText = convertView.findViewById(R.id.ticketItemHallText);
-            hallText.setText(getContext().getString(R.string.hallNrWithSemiColon) + " " + ticket.getShowing().getHallInstance().getHall().getHallNr());
+            hallText.setText(getContext().getString(R.string.hall) + " " + ticket.getShowing().getHallInstance().getHall().getHallNr());
             TextView rowText = convertView.findViewById(R.id.ticketItemRowNr);
-            rowText.setText(getContext().getString(R.string.rowNrWithSemiColon) + " " + ticket.getSeatInstance().getSeat().getSeatRow().getRowNr());
+            rowText.setText(getContext().getString(R.string.row) + " " + ticket.getSeatInstance().getSeat().getSeatRow().getRowNr());
             TextView seatNrText = convertView.findViewById(R.id.ticketItemSeatNr);
-            seatNrText.setText(getContext().getString(R.string.seatNrWithSemiColon) + " " + ticket.getSeatInstance().getSeat().getSeatNr());
+            seatNrText.setText(getContext().getString(R.string.seat) + " " + ticket.getSeatInstance().getSeat().getSeatNr());
+
+            // Display date
+            Date date = ticket.getShowing().getDate();
+
+            TextView dateOutput = convertView.findViewById(R.id.ticketDateOutput);
+            TextView timeOutput = convertView.findViewById(R.id.ticketTimeOutput);
+
+            dateOutput.setText(date.getDateString());
+            timeOutput.setText(date.getTimeString());
 
         }
 

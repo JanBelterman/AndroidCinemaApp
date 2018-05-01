@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
 
         <!-- Log in -->
-        <activity android:name=".frontEnd.presentation.logIn.MainActivity">
+        <activity android:name=".frontEnd.presentation.logIn.MainActivity" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
