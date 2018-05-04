@@ -37,10 +37,7 @@ public class SeatAdapter extends BaseAdapter {
 
         for (SeatRowInstance seatRowInstance : hallInstance.getSeatRowInstances()) {
 
-            for (SeatInstance seatInstance : seatRowInstance.getSeatInstances()) {
-                count ++;
-
-            }
+            count += seatRowInstance.getSeatInstances().size();
 
         }
 

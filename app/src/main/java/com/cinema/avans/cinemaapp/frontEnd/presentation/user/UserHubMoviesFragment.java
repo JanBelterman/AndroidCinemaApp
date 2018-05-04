@@ -1,7 +1,5 @@
 package com.cinema.avans.cinemaapp.frontEnd.presentation.user;
 
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import com.cinema.avans.cinemaapp.R;
@@ -27,7 +26,8 @@ public class UserHubMoviesFragment extends Fragment {
     private User user;
 
     private RepositoryFactory repositoryFactory;
-    private MovieAdapter movieAdapter;
+//    private MovieAdapter movieAdapter;
+    private MovieGridAdapter movieGridAdapter;
 
     public UserHubMoviesFragment() {
 
@@ -52,15 +52,15 @@ public class UserHubMoviesFragment extends Fragment {
         repositoryFactory = new RepositoryFactory(view.getContext());
         ArrayList<Movie> movies = repositoryFactory.getMovieRepository().getAllMovieWithoutTheirShowings();
 
-        ListView movieListView = getView().findViewById(R.id.userHubMoviesMovieListView);
-        movieAdapter = new MovieAdapter(view.getContext(), movies);
-        movieListView.setAdapter(movieAdapter);
-        movieListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        GridView gridView = getView().findViewById(R.id.movieGridView);
+        movieGridAdapter = new MovieGridAdapter(getContext(), movies);
+        gridView.setAdapter(movieGridAdapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Intent intent = new Intent(view.getContext(), MovieDetailedActivity.class);
-                intent.putExtra("MOVIE", movieAdapter.getItem(i));
+                intent.putExtra("MOVIE", (Movie) movieGridAdapter.getItem(i));
                 intent.putExtra("USER", user);
                 startActivity(intent);
 

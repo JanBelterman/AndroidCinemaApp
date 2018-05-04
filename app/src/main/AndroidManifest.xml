@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cinema.avans.cinemaapp">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -14,31 +14,32 @@
         android:theme="@style/AppTheme">
 
         <!-- Log in -->
-        <activity android:name=".frontEnd.presentation.logIn.MainActivity" android:noHistory="true">
+        <activity
+            android:name=".frontEnd.presentation.logIn.MainActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".frontEnd.presentation.register.RegisterActivity"></activity>
+        <activity android:name=".frontEnd.presentation.register.RegisterActivity" />
 
         <!-- Manager -->
-        <activity android:name=".frontEnd.presentation.manager.ManagerHubActivity"></activity>
-        <activity android:name=".frontEnd.presentation.manager.CreateHallActivity"></activity>
-        <activity android:name=".frontEnd.presentation.manager.CreateMovieActivity"></activity>
-        <activity android:name=".frontEnd.presentation.manager.CreateShowingConfirmActivity"></activity>
-        <activity android:name=".frontEnd.presentation.manager.CreateShowingSelectMovieActivity"></activity>
-        <activity android:name=".frontEnd.presentation.manager.CreateShowingSelectHallActivity"></activity>
+        <activity android:name=".frontEnd.presentation.manager.ManagerHubActivity" />
+        <activity android:name=".frontEnd.presentation.manager.CreateHallActivity" />
+        <activity android:name=".frontEnd.presentation.manager.CreateMovieActivity" />
+        <activity android:name=".frontEnd.presentation.manager.CreateShowingConfirmActivity" />
+        <activity android:name=".frontEnd.presentation.manager.CreateShowingSelectMovieActivity" />
+        <activity android:name=".frontEnd.presentation.manager.CreateShowingSelectHallActivity" />
 
         <!-- User -->
-        <activity android:name=".frontEnd.presentation.user.UserHubActivity"></activity>
-        <activity android:name=".frontEnd.presentation.user.MovieListActivity"></activity>
-        <activity android:name=".frontEnd.presentation.user.MovieDetailedActivity"></activity>
-        <activity android:name=".frontEnd.presentation.user.MovieDetailedShowingsActivity"></activity>
-        <activity android:name=".frontEnd.presentation.user.SeatSelectorActivity"></activity>
-        <activity android:name=".frontEnd.presentation.user.PayActivity"></activity>
-        <activity android:name=".frontEnd.presentation.manager.CreateShowingSelectDateActivity"></activity>
+        <activity android:name=".frontEnd.presentation.user.UserHubActivity" />
+        <activity android:name=".frontEnd.presentation.user.MovieDetailedActivity" />
+        <activity android:name=".frontEnd.presentation.user.MovieDetailedShowingsActivity" />
+        <activity android:name=".frontEnd.presentation.user.SeatSelectorActivity" />
+        <activity android:name=".frontEnd.presentation.user.PayActivity" />
+        <activity android:name=".frontEnd.presentation.manager.CreateShowingSelectDateActivity" />
     </application>
 
 </manifest>
