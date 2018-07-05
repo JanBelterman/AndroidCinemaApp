@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.cinema.avans.cinemaapp.frontEnd.presentation.user.MovieDetailedActivity"
+    tools:context=".presentation.user.MovieDetailedActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <ScrollView

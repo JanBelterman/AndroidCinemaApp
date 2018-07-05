@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.cinema.avans.cinemaapp.frontEnd.presentation.manager.CreateShowingSelectDateActivity">
+    tools:context=".presentation.manager.CreateShowingSelectDateActivity">
 
     <android.support.constraint.Guideline
         android:id="@+id/createShowingSelectDateGuideline1"

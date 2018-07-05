@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.cinema.avans.cinemaapp.frontEnd.presentation.user.UserHubUserFragment">
+    tools:context=".presentation.user.UserMenuTicketsFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

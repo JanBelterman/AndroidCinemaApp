@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.cinema.avans.cinemaapp.frontEnd.presentation.user.UserHubMoviesFragment">
+    tools:context=".presentation.user.UserMenuMoviesFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
