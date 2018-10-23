@@ -1,6 +1,6 @@
 package com.cinema.avans.cinemaapp.logic.user;
 
-import com.cinema.avans.cinemaapp.domain.cinema.Showing;
+import com.cinema.avans.cinemaapp.domain.Showing;
 
 import java.util.ArrayList;
 

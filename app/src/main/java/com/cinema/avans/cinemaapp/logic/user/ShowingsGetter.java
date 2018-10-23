@@ -3,8 +3,8 @@ package com.cinema.avans.cinemaapp.logic.user;
 import android.os.AsyncTask;
 
 import com.cinema.avans.cinemaapp.dataAccess.localRepositories.ShowingRepository;
-import com.cinema.avans.cinemaapp.domain.cinema.Movie;
-import com.cinema.avans.cinemaapp.domain.cinema.Showing;
+import com.cinema.avans.cinemaapp.domain.Movie;
+import com.cinema.avans.cinemaapp.domain.Showing;
 
 import java.util.ArrayList;
 

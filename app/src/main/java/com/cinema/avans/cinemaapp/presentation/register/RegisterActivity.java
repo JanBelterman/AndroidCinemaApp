@@ -10,13 +10,13 @@ import android.widget.Toast;
 
 import com.cinema.avans.cinemaapp.R;
 import com.cinema.avans.cinemaapp.dataAccess.RepositoryFactory;
-import com.cinema.avans.cinemaapp.logic.logIn.UserRegister;
-import com.cinema.avans.cinemaapp.presentation.logIn.MainActivity;
+import com.cinema.avans.cinemaapp.logic.register.RegisterManager;
+import com.cinema.avans.cinemaapp.presentation.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
     // Manager
-    private UserRegister userRegister;
+    private RegisterManager registerManager;
 
     // View
     private TextView usernameInput;
@@ -29,66 +29,60 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         //  Setup views
-        usernameInput = findViewById(R.id.loginUsernameInput);
+        usernameInput = findViewById(R.id.registerUsernameInput);
         passwordInput = findViewById(R.id.registerPasswordInput);
-        passwordConfirmInput = findViewById(R.id.loginPasswordInput);
+        passwordConfirmInput = findViewById(R.id.registerPasswordConfirmInput);
 
         // Get username that was already typed in
         if (getIntent().getExtras() != null) {
-            if (getIntent().getExtras().getString("USERNAME") != null) {
-                usernameInput.setText(getIntent().getExtras().getString("USERNAME"));
-
-            }
+            usernameInput.setText(getIntent().getExtras().getString("USERNAME"));
         }
 
         // Setup manager
-        this.userRegister = new UserRegister(
+        this.registerManager = new RegisterManager(
                 new RepositoryFactory(getApplicationContext()));
 
-        // Setup button
+        // Setup register button
         Button registerButton = findViewById(R.id.registerRegisterButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                // Get fields
                 String username = String.valueOf(usernameInput.getText());
                 String password = String.valueOf(passwordInput.getText());
                 String passwordConfirm = String.valueOf(passwordConfirmInput.getText());
 
-                boolean validInputs = true;
-
-                if (username.length() <= 0) {
+                // Validate inputs
+                if (username.isEmpty()) {
                     Toast.makeText(getApplicationContext(), R.string.enterUsernameFirst, Toast.LENGTH_SHORT).show();
-                    validInputs = false;
-
-                } else if (password.length() <= 0) {
+                    return;
+                } else if (password.isEmpty()) {
                     Toast.makeText(getApplicationContext(), R.string.enterPasswordFirst, Toast.LENGTH_SHORT).show();
-                    validInputs = false;
-
-                } else if (passwordConfirm.length() <= 0) {
+                    return;
+                } else if (passwordConfirm.isEmpty()) {
                     Toast.makeText(getApplicationContext(), R.string.confirmPasswordFirst, Toast.LENGTH_SHORT).show();
-                    validInputs = false;
-
+                    return;
                 } else if (!password.equals(passwordConfirm)) {
                     Toast.makeText(getApplicationContext(), R.string.passwordsDoNotMatch, Toast.LENGTH_SHORT).show();
-                    validInputs = false;
-
+                    return;
                 }
 
-                if (validInputs) {
-
-                    Toast.makeText(getApplicationContext(), R.string.userCreated, Toast.LENGTH_LONG).show();
-
-                    userRegister.createUser(usernameInput.getText().toString(), passwordConfirmInput.getText().toString());
-
-                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-
-                }
+                Toast.makeText(getApplicationContext(), R.string.userCreated, Toast.LENGTH_LONG).show();
+                registerManager.createUser(usernameInput.getText().toString(), passwordConfirmInput.getText().toString());
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
 
             }
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
+    }
+
 }

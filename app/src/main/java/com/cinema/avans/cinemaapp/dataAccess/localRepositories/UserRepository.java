@@ -1,6 +1,6 @@
 package com.cinema.avans.cinemaapp.dataAccess.localRepositories;
 
-import com.cinema.avans.cinemaapp.data.DatabaseManager;
+import com.cinema.avans.cinemaapp.dataAccess.data.DatabaseManager;
 import com.cinema.avans.cinemaapp.domain.login.User;
 
 /**

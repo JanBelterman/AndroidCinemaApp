@@ -2,11 +2,11 @@ package com.cinema.avans.cinemaapp.logic.user;
 
 import android.app.Activity;
 
-import com.cinema.avans.cinemaapp.dataAccess.MovieGottenCallback;
-import com.cinema.avans.cinemaapp.dataAccess.repositories.MovieRepository;
-import com.cinema.avans.cinemaapp.domain.cinema.Movie;
-import com.cinema.avans.cinemaapp.domain.login.User;
-import com.cinema.avans.cinemaapp.presentation.user.UserMenuMoviesPresentation;
+import com.cinema.avans.cinemaapp.dataAccess.callbacks.MovieGottenCallback;
+import com.cinema.avans.cinemaapp.dataAccess.remoteRepositories.MovieRepository;
+import com.cinema.avans.cinemaapp.domain.Movie;
+import com.cinema.avans.cinemaapp.domain.User;
+import com.cinema.avans.cinemaapp.presentation.user.activities.UserMenuMoviesPresentation;
 
 import java.util.ArrayList;
 

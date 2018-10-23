@@ -1,9 +1,9 @@
 package com.cinema.avans.cinemaapp.logic.user;
 
-import com.cinema.avans.cinemaapp.domain.cinema.HallInstance;
-import com.cinema.avans.cinemaapp.domain.cinema.SeatInstance;
-import com.cinema.avans.cinemaapp.domain.cinema.SeatStatus;
-import com.cinema.avans.cinemaapp.domain.cinema.Showing;
+import com.cinema.avans.cinemaapp.domain.HallInstance;
+import com.cinema.avans.cinemaapp.domain.SeatInstance;
+import com.cinema.avans.cinemaapp.domain.SeatStatus;
+import com.cinema.avans.cinemaapp.domain.Showing;
 
 import java.io.Serializable;
 import java.util.ArrayList;

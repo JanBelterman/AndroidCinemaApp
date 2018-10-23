@@ -4,98 +4,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.register.RegisterActivity">
+    tools:context=".presentation.register.RegisterActivity"
+    tools:layout_editor_absoluteY="25dp">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/registerGuideline1"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/registerCenteredConstraintLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:focusable="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:focusableInTouchMode="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/registerGuideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.16" />
+    <ProgressBar
+        android:id="@+id/registerLoader"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="@+id/registerLogo"
+        app:layout_constraintEnd_toEndOf="@+id/registerLogo"
+        app:layout_constraintStart_toStartOf="@+id/registerLogo"
+        app:layout_constraintTop_toTopOf="@+id/registerLogo" />
 
     <ImageView
         android:id="@+id/registerLogo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/registerGuideline1"
+        android:layout_width="167dp"
+        android:layout_height="126dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cinema" />
+        app:srcCompat="@drawable/pathelogo" />
 
-    <EditText
-        android:id="@+id/registerUsernameInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/enterAUserNameWithDots"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/registerDevider"
-        app:layout_constraintStart_toStartOf="@+id/registerCreateInfo"
-        app:layout_constraintTop_toBottomOf="@+id/registerCreateInfo" />
+    <android.support.design.widget.TextInputLayout
+            android:id="@+id/usernameInputLayoutRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerLogo">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/registerUsernameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:inputType="text"
+                android:hint="@string/username" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/registerPasswordInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="@string/enterAPasswordWithDots"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/registerDevider"
-        app:layout_constraintStart_toStartOf="@+id/loginUsernameInput"
-        app:layout_constraintTop_toBottomOf="@+id/loginUsernameInput" />
-
-    <EditText
-        android:id="@+id/registerPasswordConfirmInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="@string/confirmPasswordWithDots"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/registerDevider"
-        app:layout_constraintStart_toStartOf="@+id/loginUsernameInput"
-        app:layout_constraintTop_toBottomOf="@+id/registerPasswordInput" />
-
-    <Button
-        android:id="@+id/registerRegisterButton"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/passwordInputLayoutRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="@+id/registerCreateInfo"
-        app:layout_constraintTop_toBottomOf="@+id/loginPasswordInput"
-        tools:text="@string/register" />
+        app:layout_constraintEnd_toEndOf="@+id/usernameInputLayoutRegister"
+        app:layout_constraintStart_toStartOf="@+id/usernameInputLayoutRegister"
+        app:layout_constraintTop_toBottomOf="@+id/usernameInputLayoutRegister">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/registerPasswordInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:maxLines="1"
+            android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:id="@+id/registerCreateInfo"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/passwordConfirmInputLayoutRegister"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/createAnAccount"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/registerGuideline2"
-        app:layout_constraintTop_toBottomOf="@+id/registerLogo" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/passwordInputLayoutRegister"
+        app:layout_constraintStart_toStartOf="@+id/passwordInputLayoutRegister"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInputLayoutRegister">
 
-    <ImageView
-        android:id="@+id/registerDevider"
-        android:layout_width="250dp"
-        android:layout_height="2dp"
-        app:layout_constraintStart_toStartOf="@+id/registerCreateInfo"
-        app:layout_constraintTop_toBottomOf="@+id/registerCreateInfo"
-        app:srcCompat="@android:color/white" />
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/registerPasswordConfirmInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm password"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+    </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/registerRegisterButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_weight="1"
+            android:background="@drawable/login_button"
+            android:text="@string/register"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/passwordConfirmInputLayoutRegister"
+            app:layout_constraintStart_toStartOf="@+id/passwordConfirmInputLayoutRegister"
+            app:layout_constraintTop_toBottomOf="@+id/passwordConfirmInputLayoutRegister" />
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

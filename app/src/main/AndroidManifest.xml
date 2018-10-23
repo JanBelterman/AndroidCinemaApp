@@ -15,7 +15,7 @@
 
         <!-- Log in -->
         <activity
-            android:name=".presentation.logIn.MainActivity"
+            android:name=".presentation.login.LoginActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,11 +34,11 @@
         <activity android:name=".presentation.manager.CreateShowingSelectHallActivity" />
 
         <!-- User -->
-        <activity android:name=".presentation.user.UserMenuActivity" />
-        <activity android:name=".presentation.user.MovieDetailedActivity" />
-        <activity android:name=".presentation.user.MovieDetailedShowingsActivity" />
-        <activity android:name=".presentation.user.SeatSelectorActivity" />
-        <activity android:name=".presentation.user.PayActivity" />
+        <activity android:name=".presentation.user.activities.UserMenuActivity" />
+        <activity android:name=".presentation.user.activities.MovieDetailedActivity" />
+        <activity android:name=".presentation.user.activities.ShowingsActivity" />
+        <activity android:name=".presentation.user.activities.SeatSelectorActivity" />
+        <activity android:name=".presentation.user.activities.PayActivity" />
         <activity android:name=".presentation.manager.CreateShowingSelectDateActivity" />
     </application>
 

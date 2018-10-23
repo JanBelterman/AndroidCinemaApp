@@ -2,10 +2,8 @@ package com.cinema.avans.cinemaapp.dataAccess;
 
 import android.content.Context;
 
-import com.cinema.avans.cinemaapp.data.DatabaseManager;
+import com.cinema.avans.cinemaapp.dataAccess.data.DatabaseManager;
 import com.cinema.avans.cinemaapp.dataAccess.localRepositories.HallRepository;
-import com.cinema.avans.cinemaapp.dataAccess.localRepositories.LogInRepository;
-import com.cinema.avans.cinemaapp.dataAccess.localRepositories.ManagerRepository;
 import com.cinema.avans.cinemaapp.dataAccess.localRepositories.MovieRepository;
 import com.cinema.avans.cinemaapp.dataAccess.localRepositories.SeatInstanceRepository;
 import com.cinema.avans.cinemaapp.dataAccess.localRepositories.ShowingRepository;
@@ -31,26 +29,6 @@ public class RepositoryFactory {
 
     }
 
-//    public SeatRowRepository getSeatRowRepository() {
-//        return new SeatRowRepository(databaseManager);
-//
-//    }
-
-//    public SeatRepository getSeatRepository() {
-//        return new SeatRepository(databaseManager);
-//
-//    }
-
-//    public HallInstanceRepository getHallInstanceRepository() {
-//        return new HallInstanceRepository(databaseManager);
-//
-//    }
-
-//    public SeatRowInstanceRepository getSeatRowInstanceRepository() {
-//        return new SeatRowInstanceRepository(databaseManager);
-//
-//    }
-
     public SeatInstanceRepository getSeatInstanceRepositoryFactory() {
         return new SeatInstanceRepository(databaseManager);
 
@@ -71,18 +49,8 @@ public class RepositoryFactory {
 
     }
 
-    public LogInRepository getLogInRepository() {
-        return new LogInRepository(databaseManager);
-
-    }
-
     public UserRepository getUserRepository() {
         return new UserRepository(databaseManager);
-
-    }
-
-    public ManagerRepository getManagerRepository() {
-        return new ManagerRepository(databaseManager);
 
     }
 
