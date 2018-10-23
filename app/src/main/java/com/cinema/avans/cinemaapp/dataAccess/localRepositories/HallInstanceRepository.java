@@ -1,9 +1,9 @@
 package com.cinema.avans.cinemaapp.dataAccess.localRepositories;
 
 import com.cinema.avans.cinemaapp.dataAccess.data.DatabaseManager;
-import com.cinema.avans.cinemaapp.domain.cinema.SeatRowInstance;
-import com.cinema.avans.cinemaapp.domain.cinema.Showing;
-import com.cinema.avans.cinemaapp.domain.cinema.HallInstance;
+import com.cinema.avans.cinemaapp.domain.SeatRowInstance;
+import com.cinema.avans.cinemaapp.domain.Showing;
+import com.cinema.avans.cinemaapp.domain.HallInstance;
 
 /**
  * Created by JanBelterman on 28 March 2018

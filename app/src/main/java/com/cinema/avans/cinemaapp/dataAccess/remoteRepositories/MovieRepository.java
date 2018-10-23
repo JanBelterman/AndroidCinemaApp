@@ -10,9 +10,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.cinema.avans.cinemaapp.dataAccess.MovieGottenCallback;
-import com.cinema.avans.cinemaapp.domain.cinema.Genre;
-import com.cinema.avans.cinemaapp.domain.cinema.Movie;
+import com.cinema.avans.cinemaapp.dataAccess.callbacks.MovieGottenCallback;
+import com.cinema.avans.cinemaapp.domain.Genre;
+import com.cinema.avans.cinemaapp.domain.Movie;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

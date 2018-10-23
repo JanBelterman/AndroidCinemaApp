@@ -1,7 +1,7 @@
 package com.cinema.avans.cinemaapp.dataAccess.localRepositories;
 
 import com.cinema.avans.cinemaapp.dataAccess.data.DatabaseManager;
-import com.cinema.avans.cinemaapp.domain.cinema.Movie;
+import com.cinema.avans.cinemaapp.domain.Movie;
 
 import java.util.ArrayList;
 

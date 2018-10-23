@@ -1,6 +1,6 @@
-package com.cinema.avans.cinemaapp.dataAccess;
+package com.cinema.avans.cinemaapp.dataAccess.callbacks;
 
-import com.cinema.avans.cinemaapp.domain.cinema.Movie;
+import com.cinema.avans.cinemaapp.domain.Movie;
 
 /**
  * Created by JanBelterman on 29 March 2018

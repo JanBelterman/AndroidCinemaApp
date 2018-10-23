@@ -7,18 +7,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.cinema.avans.cinemaapp.domain.cinema.Genre;
-import com.cinema.avans.cinemaapp.domain.cinema.Movie;
-import com.cinema.avans.cinemaapp.domain.cinema.Showing;
-import com.cinema.avans.cinemaapp.domain.cinema.Ticket;
-import com.cinema.avans.cinemaapp.domain.cinema.Hall;
-import com.cinema.avans.cinemaapp.domain.cinema.HallInstance;
-import com.cinema.avans.cinemaapp.domain.cinema.Seat;
-import com.cinema.avans.cinemaapp.domain.cinema.SeatInstance;
-import com.cinema.avans.cinemaapp.domain.cinema.SeatRow;
-import com.cinema.avans.cinemaapp.domain.cinema.SeatRowInstance;
-import com.cinema.avans.cinemaapp.domain.login.Manager;
-import com.cinema.avans.cinemaapp.domain.login.User;
+import com.cinema.avans.cinemaapp.domain.Genre;
+import com.cinema.avans.cinemaapp.domain.Movie;
+import com.cinema.avans.cinemaapp.domain.Showing;
+import com.cinema.avans.cinemaapp.domain.Ticket;
+import com.cinema.avans.cinemaapp.domain.Hall;
+import com.cinema.avans.cinemaapp.domain.HallInstance;
+import com.cinema.avans.cinemaapp.domain.Seat;
+import com.cinema.avans.cinemaapp.domain.SeatInstance;
+import com.cinema.avans.cinemaapp.domain.SeatRow;
+import com.cinema.avans.cinemaapp.domain.SeatRowInstance;
+import com.cinema.avans.cinemaapp.domain.User;
 
 import java.util.ArrayList;
 
@@ -74,9 +73,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_TABLE_USER); // Create
         Log.i("Database", CREATE_TABLE_USER); // Print
 
-        sqLiteDatabase.execSQL(CREATE_TABLE_MANAGER); // Create
-        Log.i("Database", CREATE_TABLE_MANAGER); // Print
-
     }
 
     @Override
@@ -90,7 +86,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_SEAT_ROW_INSTANCE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_SEAT_INSTANCE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MOVIE);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MANAGER);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_LOG_IN);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_SHOWING);
@@ -890,71 +885,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         logInCursor.close();
 
         return user;
-
-    }
-
-    // MANAGER
-    public void createManager(Manager manager) {
-
-        SQLiteDatabase database = getWritableDatabase();
-
-        ContentValues logInValues = new ContentValues();
-        logInValues.put(LOG_IN_COLUMN_USERNAME, manager.getUsername());
-        logInValues.put(LOG_IN_COLUMN_PASSWORD, manager.getPassword());
-
-        database.insert(TABLE_LOG_IN, null, logInValues);
-
-        ContentValues managerValues = new ContentValues();
-        managerValues.put(MANAGER_COLUMN_USERNAME, manager.getUsername());
-
-        database.insert(TABLE_MANAGER, null, managerValues);
-
-    }
-    public Manager getManager(String username) {
-
-        Manager manager = new Manager();
-
-        SQLiteDatabase database = getReadableDatabase();
-
-        String managerQuery =
-                "SELECT *" + "\n"
-                        + "FROM " + TABLE_MANAGER + "\n"
-                        + "WHERE " + MANAGER_COLUMN_USERNAME + " = '" + username + "'";
-
-        Cursor managerCursor = database.rawQuery(managerQuery, null);
-
-        if (managerCursor.moveToFirst()) {
-
-            manager.setUsername(managerCursor.getString(managerCursor.getColumnIndex(MANAGER_COLUMN_USERNAME)));
-
-        }
-
-        if (manager.getUsername().isEmpty() || manager.getUsername().length() == 0) {
-            return null;
-
-        }
-
-        managerCursor.close();
-
-        String logInQuery =
-                "SELECT *" + "\n"
-                        + "FROM " + TABLE_LOG_IN + "\n"
-                        + "WHERE " + LOG_IN_COLUMN_USERNAME + " = '" + username + "'";
-
-        Cursor logInCursor = database.rawQuery(logInQuery, null);
-
-        if (logInCursor.moveToFirst()) {
-
-            logInCursor.moveToFirst();
-
-            manager.setUsername(logInCursor.getString(logInCursor.getColumnIndex(LOG_IN_COLUMN_USERNAME)));
-            manager.setPassword(logInCursor.getString(logInCursor.getColumnIndex(LOG_IN_COLUMN_PASSWORD)));
-
-        }
-
-        logInCursor.close();
-
-        return manager;
 
     }
 

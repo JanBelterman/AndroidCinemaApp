@@ -1,8 +1,8 @@
 package com.cinema.avans.cinemaapp.dataAccess.localRepositories;
 
 import com.cinema.avans.cinemaapp.dataAccess.data.DatabaseManager;
-import com.cinema.avans.cinemaapp.domain.cinema.Seat;
-import com.cinema.avans.cinemaapp.domain.cinema.SeatRow;
+import com.cinema.avans.cinemaapp.domain.Seat;
+import com.cinema.avans.cinemaapp.domain.SeatRow;
 
 import java.util.ArrayList;
 
