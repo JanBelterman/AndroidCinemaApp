@@ -11,10 +11,8 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.cinema.avans.cinemaapp.R;
-import com.cinema.avans.cinemaapp.Session;
 import com.cinema.avans.cinemaapp.domain.Movie;
-import com.cinema.avans.cinemaapp.domain.User;
-import com.cinema.avans.cinemaapp.logic.additional.UserMenuMoviesManager;
+import com.cinema.avans.cinemaapp.logic.managers.UserMenuMoviesManager;
 import com.cinema.avans.cinemaapp.presentation.menu.adapters.MovieGridAdapter;
 import com.cinema.avans.cinemaapp.presentation.menu.callbacks.UserMenuMoviesPresentation;
 

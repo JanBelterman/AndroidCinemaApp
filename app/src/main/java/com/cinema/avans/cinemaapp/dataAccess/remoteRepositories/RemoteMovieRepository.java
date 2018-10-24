@@ -45,6 +45,7 @@ public class RemoteMovieRepository {
 
     // Called by manager: sends request to api to get movies
     public void getMovies() {
+        // TODO change so that it asks server to include genres
         getGenresWithVolley();
     }
 

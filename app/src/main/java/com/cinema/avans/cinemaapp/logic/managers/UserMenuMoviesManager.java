@@ -1,4 +1,4 @@
-package com.cinema.avans.cinemaapp.logic.additional;
+package com.cinema.avans.cinemaapp.logic.managers;
 
 import android.app.Activity;
 
