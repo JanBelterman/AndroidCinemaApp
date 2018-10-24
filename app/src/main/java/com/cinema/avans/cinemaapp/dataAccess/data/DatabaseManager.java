@@ -290,7 +290,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             while (!cursor.isAfterLast()) {
 
                 Seat seat = new Seat();
-                seat.setSeatId(cursor.getInt(cursor.getColumnIndex(SEAT_COLUMN_SEAT_ID)));
+                seat.setID(cursor.getInt(cursor.getColumnIndex(SEAT_COLUMN_SEAT_ID)));
                 seat.setSeatNr(cursor.getInt(cursor.getColumnIndex(SEAT_COLUMN_SEAT_NR)));
                 seat.setValue(cursor.getInt(cursor.getColumnIndex(SEAT_COLUMN_SEAT_VALUE)));
                 seat.setSeatRow(getSeatRow(rowId));
@@ -326,7 +326,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             seat.setSeatNr(cursor.getInt(cursor.getColumnIndex(SEAT_COLUMN_SEAT_NR)));
             seat.setValue(cursor.getInt(cursor.getColumnIndex(SEAT_COLUMN_SEAT_VALUE)));
             seat.setSeatRow(getSeatRow(cursor.getInt(cursor.getColumnIndex(SEAT_COLUMN_ROW_ID))));
-            seat.setSeatId(cursor.getInt(cursor.getColumnIndex(SEAT_COLUMN_SEAT_ID)));
+            seat.setID(cursor.getInt(cursor.getColumnIndex(SEAT_COLUMN_SEAT_ID)));
 
 
         }
@@ -422,7 +422,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
                 // Create SeatRow
                 SeatRowInstance seatRowInstance = new SeatRowInstance();
-                seatRowInstance.setSeatRowInstanceId(cursor.getInt(cursor.getColumnIndex(SEAT_ROW_INSTANCE_COLUMN_ROW_INSTANCE_ID)));
+                seatRowInstance.setID(cursor.getInt(cursor.getColumnIndex(SEAT_ROW_INSTANCE_COLUMN_ROW_INSTANCE_ID)));
                 seatRowInstances.add(seatRowInstance);
 
                 // Next
@@ -451,9 +451,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         // Create SeatInstance
         ContentValues values = new ContentValues();
-        values.put(SEAT_INSTANCE_COLUMN_SEAT_ID, seatInstance.getSeat().getSeatId());
+        values.put(SEAT_INSTANCE_COLUMN_SEAT_ID, seatInstance.getSeat().getID());
         values.put(SEAT_INSTANCE_COLUMN_STATUS, seatInstance.getStatusInt()); // 1 = Available, 2 = Reserved, 3 = Gap
-        values.put(SEAT_INSTANCE_COLUMN_SEAT_ROW_INSTANCE_ID, seatInstance.getSeatRowInstance().getSeatRowInstanceId());
+        values.put(SEAT_INSTANCE_COLUMN_SEAT_ROW_INSTANCE_ID, seatInstance.getSeatRowInstance().getID());
         // Insert Seat
         database.insert(TABLE_SEAT_INSTANCE, null, values);
 
@@ -467,7 +467,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         updatedValues.put(SEAT_INSTANCE_COLUMN_STATUS, seatInstance.getStatusInt());
 
         database.update(TABLE_SEAT_INSTANCE, updatedValues,
-                SEAT_INSTANCE_COLUMN_SEAT_INSTANCE_ID + "=" + seatInstance.getSeatInstanceId(),
+                SEAT_INSTANCE_COLUMN_SEAT_INSTANCE_ID + "=" + seatInstance.getID(),
                 null);
 
     }
@@ -479,7 +479,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         String query =
                 "SELECT *" + "\n"
                         + "FROM " + TABLE_SEAT_INSTANCE + "\n"
-                        + "WHERE " + SEAT_INSTANCE_COLUMN_SEAT_ROW_INSTANCE_ID + " = " + seatRowInstance.getSeatRowInstanceId();
+                        + "WHERE " + SEAT_INSTANCE_COLUMN_SEAT_ROW_INSTANCE_ID + " = " + seatRowInstance.getID();
         // Execute query
         Cursor cursor = database.rawQuery(query, null);
 
@@ -490,7 +490,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
                 // Create SeatInstance
                 SeatInstance seatInstance = new SeatInstance();
-                seatInstance.setSeatInstanceId(cursor.getInt(cursor.getColumnIndex(SEAT_INSTANCE_COLUMN_SEAT_INSTANCE_ID)));
+                seatInstance.setID(cursor.getInt(cursor.getColumnIndex(SEAT_INSTANCE_COLUMN_SEAT_INSTANCE_ID)));
                 seatInstance.setStatus(cursor.getInt(cursor.getColumnIndex(SEAT_INSTANCE_COLUMN_STATUS)));
                 seatInstances.add(seatInstance);
 
@@ -528,7 +528,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             SeatInstance seatInstance = new SeatInstance();
             seatInstance.setStatus(cursor.getInt(cursor.getColumnIndex(SEAT_INSTANCE_COLUMN_STATUS)));
             seatInstance.setSeat(getSeat(cursor.getInt(cursor.getColumnIndex(SEAT_INSTANCE_COLUMN_SEAT_ID))));
-            seatInstance.setSeatInstanceId(cursor.getInt(cursor.getColumnIndex(SEAT_INSTANCE_COLUMN_SEAT_INSTANCE_ID)));
+            seatInstance.setID(cursor.getInt(cursor.getColumnIndex(SEAT_INSTANCE_COLUMN_SEAT_INSTANCE_ID)));
 
             cursor.close();
 
@@ -737,7 +737,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(TICKET_COLUMN_SHOWING_ID, ticket.getShowing().getID());
-        values.put(TICKET_COLUMN_SEAT_INSTANCE_ID, ticket.getSeatInstance().getSeatInstanceId());
+        values.put(TICKET_COLUMN_SEAT_INSTANCE_ID, ticket.getSeatInstance().getID());
         values.put(TICKET_COLUMN_USER_ID, ticket.getUser().getUsername());
 
         database.insert(TABLE_TICKET, null, values);

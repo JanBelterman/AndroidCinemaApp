@@ -17,7 +17,7 @@ public class Showing implements Serializable {
 
         this.ID = 0;
         this.hallInstance = new HallInstance();
-        this.movie = null;
+        this.movie = new Movie();
         this.date = new Date();
 
     }

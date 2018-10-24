@@ -23,7 +23,7 @@ public class LocalSeatRowInstanceRepository {
     void createSeatRowInstance(SeatRowInstance seatRowInstance) {
 
         // Add the seat row instance
-        seatRowInstance.setSeatRowInstanceId(databaseManager.createSeatRowInstanceAndGetGeneratedId(seatRowInstance));
+        seatRowInstance.setID(databaseManager.createSeatRowInstanceAndGetGeneratedId(seatRowInstance));
 
         // Add the SeatInstances within the SeatRow
         for (SeatInstance seatInstance : seatRowInstance.getSeatInstances()) {

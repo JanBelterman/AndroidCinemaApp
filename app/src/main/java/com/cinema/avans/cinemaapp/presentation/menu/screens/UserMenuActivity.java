@@ -27,7 +27,7 @@ public class UserMenuActivity extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_user_hub);
         // Set session user
-        Session.user = (User) getIntent().getSerializableExtra("USER");
+        if (Session.user == null) Session.user = (User) getIntent().getSerializableExtra("USER");
         // Set view components
         BottomNavigationView navBar = findViewById(R.id.userHubNavBar);
         userMenuMoviesFragment = new UserMenuMoviesFragment();

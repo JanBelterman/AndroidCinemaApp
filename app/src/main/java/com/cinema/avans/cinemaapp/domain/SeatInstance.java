@@ -4,23 +4,23 @@ import java.io.Serializable;
 
 public class SeatInstance implements Serializable {
 
-    private int seatInstanceId; // Done
+    private int ID; // Done
     private Seat seat; // Done
     private SeatRowInstance seatRowInstance; // Done
     private SeatStatus status; // Done
 
     public SeatInstance() {
 
-        this.seatInstanceId = 0;
-        this.seat = null;
-        this.seatRowInstance = null;
+        this.ID = 0;
+        this.seat = new Seat();
+        this.seatRowInstance = new SeatRowInstance();
         this.status = SeatStatus.AVAILABLE;
 
     }
 
     // SETTERS
-    public void setSeatInstanceId(int seatInstanceId) {
-        this.seatInstanceId = seatInstanceId;
+    public void setID(int ID) {
+        this.ID = ID;
     }
     public void setSeat(Seat seat) {
         this.seat = seat;
@@ -51,8 +51,8 @@ public class SeatInstance implements Serializable {
     }
 
     // GETTERS
-    public int getSeatInstanceId() {
-        return this.seatInstanceId;
+    public int getID() {
+        return this.ID;
     }
     public Seat getSeat() {
         return seat;
@@ -84,7 +84,7 @@ public class SeatInstance implements Serializable {
     @Override
     public String toString() {
 
-        return "SeatInstanceId: " + seatInstanceId + "\n" +
+        return "SeatInstanceId: " + ID + "\n" +
                 "Is an instance of: " + seat + "\n" +
                 "Withing SeatRowInstance: " + seatRowInstance + "\n" +
                 "Status: " + status;

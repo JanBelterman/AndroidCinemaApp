@@ -10,15 +10,15 @@ import java.util.ArrayList;
 public class SeatRowInstance implements Serializable {
 
     private HallInstance hallInstance; // Done
-    private int seatRowInstanceId; // Done
+    private int ID; // Done
     private SeatRow seatRow; // Done
     private ArrayList<SeatInstance> seatInstances; // Done
 
     public SeatRowInstance() {
 
-        this.hallInstance = null;
-        this.seatRowInstanceId = 0;
-        this.seatRow = null;
+        this.hallInstance = new HallInstance();
+        this.ID = 0;
+        this.seatRow = new SeatRow();
         this.seatInstances = new ArrayList<>();
 
     }
@@ -70,8 +70,8 @@ public class SeatRowInstance implements Serializable {
     public void setHallInstance(HallInstance hallInstance) {
         this.hallInstance = hallInstance;
     }
-    public void setSeatRowInstanceId(int seatRowInstanceId) {
-        this.seatRowInstanceId = seatRowInstanceId;
+    public void setID(int ID) {
+        this.ID = ID;
     }
     public void setSeatRow(SeatRow seatRow) {
         this.seatRow = seatRow;
@@ -85,8 +85,8 @@ public class SeatRowInstance implements Serializable {
     public HallInstance getHallInstance() {
         return hallInstance;
     }
-    public int getSeatRowInstanceId() {
-        return seatRowInstanceId;
+    public int getID() {
+        return ID;
     }
     public SeatRow getSeatRow() {
         return seatRow;
@@ -98,7 +98,7 @@ public class SeatRowInstance implements Serializable {
     @Override
     public String toString() {
 
-        return "SeatRowInstanceId: " + seatRowInstanceId + "\n" +
+        return "SeatRowInstanceId: " + ID + "\n" +
                 "Is an instance of: " + seatRow + "\n" +
                 "HallInstance: " + hallInstance + "\n" +
                 "Amount of Seats: " + getAmountOfActualSeats();

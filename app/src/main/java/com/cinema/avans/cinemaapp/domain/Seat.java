@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 public class Seat implements Serializable {
 
-    private int seatId; // Done
+    private int ID; // Done
     private SeatRow seatRow; // Done
     private int seatNr; // Done
     private SeatValue seatValue; // Done
 
     public Seat() {
 
-        this.seatId = 0;
+        this.ID = 0;
         this.seatRow = new SeatRow();
         this.seatNr = 0;
         this.seatValue = SeatValue.OK;
@@ -23,8 +23,8 @@ public class Seat implements Serializable {
     }
 
     // SETTERS
-    public void setSeatId(int seatId) {
-        this.seatId = seatId;
+    public void setID(int ID) {
+        this.ID = ID;
     }
     public void setSeatRow(SeatRow seatRow) {
         this.seatRow = seatRow;
@@ -61,8 +61,8 @@ public class Seat implements Serializable {
     }
 
     // GETTERS
-    public int getSeatId() {
-        return seatId;
+    public int getID() {
+        return ID;
     }
     public SeatRow getSeatRow() {
         return seatRow;
@@ -97,7 +97,7 @@ public class Seat implements Serializable {
     @Override
     public String toString() {
 
-        return "SeatId:" + seatId + "\n" +
+        return "SeatId:" + ID + "\n" +
                 "Seat in hall: " + seatRow.getHall() + "\n" +
                 "Seat in SeatRow: " + seatRow + "\n" +
                 "SeatNr: " + seatNr + "\n" +

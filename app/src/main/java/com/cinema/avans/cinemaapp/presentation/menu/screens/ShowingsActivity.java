@@ -52,11 +52,7 @@ public class ShowingsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(ShowingsActivity.this, SeatSelectorActivity.class);
-                intent.putExtra("SEAT_SELECTOR", new SeatSelector(
-                        showingsListAdapter.getItem(i),
-                        showingsListAdapter.getItem(i).getHallInstance(),
-                        1));
-                intent.putExtra("USER", Session.user);
+                intent.putExtra("SHOWING", showingsListAdapter.getItem(i));
                 startActivity(intent);
                 overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
             }

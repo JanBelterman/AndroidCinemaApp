@@ -54,7 +54,7 @@ public class Ticket implements Serializable {
 
         return "TicketId: " + ticketId + "\n"
                 + "ShowingId: " + showing.getID() + "\n"
-                + "SeatInstanceId: " + seatInstance.getSeatInstanceId();
+                + "SeatInstanceId: " + seatInstance.getID();
 
     }
 

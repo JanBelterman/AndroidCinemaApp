@@ -50,9 +50,7 @@ public class RemoteShowingRepository {
                         JSONObject showingFromApi = showingsFromApi.getJSONObject(i);
                         Showing showing = new Showing();
                         showing.setID(showingFromApi.getInt("ID"));
-                        HallInstance hallInstance = new HallInstance();
-                        hallInstance.setID(showingFromApi.getInt("hallInstanceID"));
-                        showing.setHallInstance(new HallInstance());
+                        showing.getHallInstance().setID(showingFromApi.getInt("hallInstanceID"));
                         showing.setMovie(movie);
                         showing.setDate(showingFromApi.getString("date"));
                         showings.add(showing);

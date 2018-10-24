@@ -7,15 +7,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.cinema.avans.cinemaapp.R;
+import com.cinema.avans.cinemaapp.Session;
 import com.cinema.avans.cinemaapp.dataAccess.factories.LocalRepositoryFactory;
+import com.cinema.avans.cinemaapp.dataAccess.remoteRepositories.RemoteTicketRepository;
 import com.cinema.avans.cinemaapp.domain.SeatInstance;
 import com.cinema.avans.cinemaapp.domain.Showing;
 import com.cinema.avans.cinemaapp.domain.Ticket;
 import com.cinema.avans.cinemaapp.domain.User;
-import com.cinema.avans.cinemaapp.logic.additional.TicketBoughtManager;
-import com.cinema.avans.cinemaapp.logic.additional.TicketManagerFinishedListener;
+import com.cinema.avans.cinemaapp.logic.callbacks.PaymentCallback;
 
 import java.util.ArrayList;
 
@@ -23,103 +25,73 @@ import java.util.ArrayList;
  * Created by JanBelterman on 03 April 2018
  */
 
-public class PayActivity extends AppCompatActivity implements TicketManagerFinishedListener {
+public class PayActivity extends AppCompatActivity implements PaymentCallback {
 
-    private TicketBoughtManager ticketBoughtManager;
+    private RemoteTicketRepository ticketRepository;
 
     private ArrayList<SeatInstance> seatInstancesForUser;
-    private User user;
     private Showing showing;
+
+    // TODO counter till all tickets have responded
+    private int counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-
-        user = (User) getIntent().getSerializableExtra("USER");
-
-        Log.i("PaymentActivity", "User gotten: " + user);
-
-        stopLoader();
-
         seatInstancesForUser = (ArrayList<SeatInstance>) getIntent().getSerializableExtra("SELECTED_SEATS");
         showing = (Showing) getIntent().getSerializableExtra("SHOWING");
+        ticketRepository = new RemoteTicketRepository(this, this);
+        createPayButton();
+    }
 
-        ticketBoughtManager = new TicketBoughtManager(this,
-                new LocalRepositoryFactory(getApplicationContext()),
-                seatInstancesForUser,
-                user);
-
+    private void createPayButton() {
         Button payButton = findViewById(R.id.payPayButton);
         payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Ticket[] tickets = new Ticket[seatInstancesForUser.size()];
-
-                int i = 0;
+                ArrayList<Ticket> tickets = new ArrayList<>();
                 for (SeatInstance seatInstance : seatInstancesForUser) {
-
-                    tickets[i] = createTicket(i);
-                    Log.i("PayActivity", "Created ticket: " + tickets[i]);
-                    i++;
-
+                    Ticket ticket = new Ticket();
+                    ticket.setShowing(showing);
+                    ticket.setSeatInstance(seatInstance);
+                    tickets.add(ticket);
                 }
-
                 startLoader();
-
-                ticketBoughtManager.execute(tickets);
-
+                ticketRepository.addAll(tickets);
             }
         });
-
-    }
-
-    public Ticket createTicket(int seatInstanceIndex) {
-
-        // Create Ticket
-        Ticket ticket = new Ticket();
-        ticket.setUser(user);
-        ticket.setShowing(showing);
-        ticket.setSeatInstance(seatInstancesForUser.get(seatInstanceIndex));
-        // Return Ticket
-        return ticket;
-
     }
 
     @Override
-    public void ticketManagerFinished(User user) {
-
+    public void success() {
         stopLoader();
-
         Intent intent = new Intent(PayActivity.this, UserMenuActivity.class);
-        intent.putExtra("USER", user);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Toast.makeText(getApplicationContext(), "Tickets payed", Toast.LENGTH_LONG).show();
         startActivity(intent);
         overridePendingTransition(R.anim.fade_out, R.anim.fade_in);
+    }
 
+    @Override
+    public void error(String message) {
+        stopLoader();
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
     private void startLoader() {
-
         ProgressBar progressBar = findViewById(R.id.payProgress);
         progressBar.setVisibility(View.VISIBLE);
-
     }
 
     private void stopLoader() {
-
         ProgressBar progressBar = findViewById(R.id.payProgress);
         progressBar.setVisibility(View.GONE);
-
     }
 
     @Override
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.enter_from_left, R.anim.exit_to_right);
-
     }
 
 }

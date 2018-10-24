@@ -26,14 +26,14 @@ import java.util.Map;
 public class RemoteMovieRepository {
 
     // Manager
-    private MovieCallback movieCallback;
+    private MovieCallback callback;
 
     // Activity needed
     private Activity activity;
 
     // Constructor
-    public RemoteMovieRepository(MovieCallback movieCallback, Activity activity) {
-        this.movieCallback = movieCallback;
+    public RemoteMovieRepository(MovieCallback callback, Activity activity) {
+        this.callback = callback;
         this.activity = activity;
     }
 
@@ -64,7 +64,7 @@ public class RemoteMovieRepository {
                                 movieFromApi.getInt("genreID"),
                                 movieFromApi.getString("genre")
                         ));
-                        movieCallback.movieGotten(movie);
+                        callback.movieGotten(movie);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -74,7 +74,7 @@ public class RemoteMovieRepository {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i("UserMoviesFragment", "Error getting movies: " + error);
-                movieCallback.errorGotten("Error getting movies");
+                callback.errorGotten("Error getting movies");
             }
         }){
             @Override
