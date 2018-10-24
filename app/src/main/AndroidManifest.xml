@@ -15,7 +15,7 @@
 
         <!-- Log in -->
         <activity
-            android:name=".frontEnd.presentation.logIn.MainActivity"
+            android:name=".presentation.login.LoginActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,23 +23,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".frontEnd.presentation.register.RegisterActivity" />
+        <activity android:name=".presentation.register.RegisterActivity" />
 
         <!-- Manager -->
-        <activity android:name=".frontEnd.presentation.manager.ManagerHubActivity" />
-        <activity android:name=".frontEnd.presentation.manager.CreateHallActivity" />
-        <activity android:name=".frontEnd.presentation.manager.CreateMovieActivity" />
-        <activity android:name=".frontEnd.presentation.manager.CreateShowingConfirmActivity" />
-        <activity android:name=".frontEnd.presentation.manager.CreateShowingSelectMovieActivity" />
-        <activity android:name=".frontEnd.presentation.manager.CreateShowingSelectHallActivity" />
+        <activity android:name=".presentation.manager.ManagerHubActivity" />
+        <activity android:name=".presentation.manager.CreateHallActivity" />
+        <activity android:name=".presentation.manager.CreateMovieActivity" />
+        <activity android:name=".presentation.manager.CreateShowingConfirmActivity" />
+        <activity android:name=".presentation.manager.CreateShowingSelectMovieActivity" />
+        <activity android:name=".presentation.manager.CreateShowingSelectHallActivity" />
 
         <!-- User -->
-        <activity android:name=".frontEnd.presentation.user.UserHubActivity" />
-        <activity android:name=".frontEnd.presentation.user.MovieDetailedActivity" />
-        <activity android:name=".frontEnd.presentation.user.MovieDetailedShowingsActivity" />
-        <activity android:name=".frontEnd.presentation.user.SeatSelectorActivity" />
-        <activity android:name=".frontEnd.presentation.user.PayActivity" />
-        <activity android:name=".frontEnd.presentation.manager.CreateShowingSelectDateActivity" />
+        <activity android:name=".presentation.menu.screens.UserMenuActivity" />
+        <activity android:name=".presentation.menu.screens.MovieDetailedActivity" />
+        <activity android:name=".presentation.menu.screens.ShowingsActivity" />
+        <activity android:name=".presentation.menu.screens.SeatSelectorActivity" />
+        <activity android:name=".presentation.menu.screens.PayActivity" />
+        <activity android:name=".presentation.manager.CreateShowingSelectDateActivity" />
     </application>
 
 </manifest>
