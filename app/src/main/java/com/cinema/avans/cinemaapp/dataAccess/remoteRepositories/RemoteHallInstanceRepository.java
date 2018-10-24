@@ -20,7 +20,6 @@ import com.cinema.avans.cinemaapp.logic.callbacks.HallInstanceCallback;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,7 +56,7 @@ public class RemoteHallInstanceRepository {
                         SeatRowInstance seatRowInstance = new SeatRowInstance();
                         seatRowInstance.setID(seatRowInstanceFromApi.getInt("ID"));
                         seatRowInstance.setHallInstance(hallInstance);
-                        seatRowInstance.getSeatRow().setRowId(seatRowInstanceFromApi.getInt("seatRowID"));
+                        seatRowInstance.getSeatRow().setID(seatRowInstanceFromApi.getInt("seatRowID"));
                         // Get seats
                         JSONArray seatInstancesFromApi = seatRowInstanceFromApi.getJSONArray("seatInstances");
                         for (int j = 0; j < seatInstancesFromApi.length(); j++) {

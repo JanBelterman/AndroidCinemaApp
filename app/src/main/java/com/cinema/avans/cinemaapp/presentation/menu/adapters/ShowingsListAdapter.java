@@ -34,7 +34,7 @@ public class ShowingsListAdapter extends ArrayAdapter<Showing> {
 
         if (convertView == null) {
 
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_showings, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_showing, parent, false);
 
         }
 

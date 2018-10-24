@@ -26,7 +26,7 @@ public class MovieDetailedActivity extends AppCompatActivity implements Showings
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_detailed);
+        setContentView(R.layout.activity_movie);
         // Get movie
         if (getIntent().getExtras() != null) movie = (Movie) getIntent().getExtras().getSerializable("MOVIE");
         showingsRepository = new RemoteShowingRepository(this, this);

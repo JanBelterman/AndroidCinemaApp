@@ -28,7 +28,7 @@ public class LocalSeatRepository {
 
     ArrayList<Seat> getSeats(SeatRow seatRow) {
 
-        return databaseManager.getSeats(seatRow.getRowId());
+        return databaseManager.getSeats(seatRow.getID());
 
     }
 

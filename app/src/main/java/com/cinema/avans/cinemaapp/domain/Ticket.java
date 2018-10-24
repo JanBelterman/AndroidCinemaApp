@@ -8,22 +8,20 @@ import java.io.Serializable;
 
 public class Ticket implements Serializable {
 
-    private int ticketId;
+    private int ID;
     private Showing showing;
     private SeatInstance seatInstance;
     private User user;
 
     public Ticket() {
-
-        this.ticketId = 0;
+        this.ID = 0;
         this.showing = new Showing();
         this.seatInstance = new SeatInstance();
-
     }
 
     // SETTERS
-    public void setTicketId(int ticketId) {
-        this.ticketId = ticketId;
+    public void setID(int ID) {
+        this.ID = ID;
     }
     public void setShowing(Showing showing) {
         this.showing = showing;
@@ -36,8 +34,8 @@ public class Ticket implements Serializable {
     }
 
     // GETTERS
-    public int getTicketId() {
-        return ticketId;
+    public int getID() {
+        return ID;
     }
     public Showing getShowing() {
         return showing;
@@ -52,7 +50,7 @@ public class Ticket implements Serializable {
     @Override
     public String toString() {
 
-        return "TicketId: " + ticketId + "\n"
+        return "TicketId: " + ID + "\n"
                 + "ShowingId: " + showing.getID() + "\n"
                 + "SeatInstanceId: " + seatInstance.getID();
 

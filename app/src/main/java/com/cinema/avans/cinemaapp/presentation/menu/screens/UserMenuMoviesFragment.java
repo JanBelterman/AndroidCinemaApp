@@ -24,19 +24,19 @@ import java.util.ArrayList;
 public class UserMenuMoviesFragment extends Fragment implements MovieCallback {
 
     private MovieGridAdapter movieGridAdapter;
-
     private ArrayList<Movie> movies;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        movies = new ArrayList<>();
-        new RemoteMovieRepository(this, getActivity()).getWithGenre();
-        return inflater.inflate(R.layout.fragment_user_hub_movies, container, false);
+        return inflater.inflate(R.layout.fragment_user_movies, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        start();
+        movies = new ArrayList<>();
+        new RemoteMovieRepository(this, getActivity()).getWithGenre();
         // Avoid null exceptions
         if (getView() != null && getView().findViewById(R.id.movieGridView) != null) {
             // Get grid view
@@ -60,13 +60,23 @@ public class UserMenuMoviesFragment extends Fragment implements MovieCallback {
 
     @Override
     public void movieGotten(Movie movie) {
+        stop();
         movies.add(movie);
         movieGridAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void errorGotten(String error) {
+        stop();
         Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+    }
+
+    private void start() {
+        getActivity().findViewById(R.id.moviesProgressBar).setVisibility(View.VISIBLE);
+    }
+
+    private void stop() {
+        getActivity().findViewById(R.id.moviesProgressBar).setVisibility(View.INVISIBLE);
     }
 
 }

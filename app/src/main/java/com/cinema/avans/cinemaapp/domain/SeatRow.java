@@ -10,14 +10,14 @@ import java.util.ArrayList;
 public class SeatRow implements Serializable {
 
     private Hall hall; // Done
-    private int rowId; // Done
+    private int ID; // Done
     private int rowNr; // Done
     private ArrayList<Seat> seats; // Done
 
     public SeatRow() {
 
         this.hall = new Hall();
-        this.rowId = 0;
+        this.ID = 0;
         this.rowNr = 0;
         this.seats = new ArrayList<>();
 
@@ -32,8 +32,8 @@ public class SeatRow implements Serializable {
     public void setHall(Hall hall) {
         this.hall = hall;
     }
-    public void setRowId(int rowId) {
-        this.rowId = rowId;
+    public void setID(int ID) {
+        this.ID = ID;
     }
     public void setSeats(ArrayList<Seat> seats) {
         this.seats = seats;
@@ -46,8 +46,8 @@ public class SeatRow implements Serializable {
     public Hall getHall() {
         return hall;
     }
-    public int getRowId() {
-        return rowId;
+    public int getID() {
+        return ID;
     }
     public int getRowNr() {
         return rowNr;
@@ -59,7 +59,7 @@ public class SeatRow implements Serializable {
     @Override
     public String toString() {
 
-        return "SeatRowId: " + rowId + "\n" +
+        return "SeatRowId: " + ID + "\n" +
                 "Within HallNr: " + hall.getHallNr() + "\n" +
                 "RowNr: " + rowNr + "\n" +
                 "Amount of Seats within SeatRow: " + seats.size();

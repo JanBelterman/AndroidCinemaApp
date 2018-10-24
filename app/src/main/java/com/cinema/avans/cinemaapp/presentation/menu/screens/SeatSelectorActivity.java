@@ -33,7 +33,7 @@ public class SeatSelectorActivity extends AppCompatActivity implements HallInsta
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seat_selector);
+        setContentView(R.layout.activity_seat_select);
         // Get data
         showing = (Showing) getIntent().getExtras().getSerializable("SHOWING");
         // Load hall instance

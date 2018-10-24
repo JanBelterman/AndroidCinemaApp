@@ -9,10 +9,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.cinema.avans.cinemaapp.R;
-import com.cinema.avans.cinemaapp.Session;
 import com.cinema.avans.cinemaapp.domain.Movie;
 import com.cinema.avans.cinemaapp.domain.Showing;
-import com.cinema.avans.cinemaapp.logic.additional.SeatSelector;
 import com.cinema.avans.cinemaapp.logic.additional.ShowingsComparator;
 import com.cinema.avans.cinemaapp.presentation.menu.adapters.ShowingsListAdapter;
 
@@ -30,7 +28,7 @@ public class ShowingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_showings);
+        setContentView(R.layout.activity_showings);
 
         // Get Movie from MovieDetailedActivity
         if (getIntent().getExtras() != null) movie = (Movie) getIntent().getExtras().getSerializable("MOVIE");

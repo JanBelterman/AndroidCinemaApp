@@ -187,7 +187,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         int genId = (int) database.insert(TABLE_SEAT_ROW, null, values);
 
         // SetSeatRow its generated Id
-        seatRow.setRowId(genId);
+        seatRow.setID(genId);
         // Return SeatRow
         return seatRow;
 
@@ -211,9 +211,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
                 SeatRow seatRow = new SeatRow();
                 seatRow.setHall(getHall(cursor.getInt(cursor.getColumnIndex(SEAT_ROW_COLUMN_HALL_NR))));
-                seatRow.setRowId(cursor.getInt(cursor.getColumnIndex(SEAT_ROW_COLUMN_ROW_ID)));
+                seatRow.setID(cursor.getInt(cursor.getColumnIndex(SEAT_ROW_COLUMN_ROW_ID)));
                 seatRow.setRowNr(cursor.getInt(cursor.getColumnIndex(SEAT_ROW_COLUMN_ROW_NR)));
-                seatRow.setSeats(getSeats(seatRow.getRowId()));
+                seatRow.setSeats(getSeats(seatRow.getID()));
 
                 seatRows.add(seatRow);
 
@@ -243,7 +243,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
             SeatRow seatRow = new SeatRow();
             seatRow.setHall(getHall(cursor.getInt(cursor.getColumnIndex(SEAT_ROW_COLUMN_HALL_NR))));
-            seatRow.setRowId(cursor.getInt(cursor.getColumnIndex(SEAT_ROW_COLUMN_ROW_ID)));
+            seatRow.setID(cursor.getInt(cursor.getColumnIndex(SEAT_ROW_COLUMN_ROW_ID)));
             seatRow.setRowNr(cursor.getInt(cursor.getColumnIndex(SEAT_ROW_COLUMN_ROW_NR)));
 
             cursor.close();
@@ -265,7 +265,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         // Create Seat
         ContentValues values = new ContentValues();
-        values.put(SEAT_COLUMN_ROW_ID, seat.getSeatRow().getRowId());
+        values.put(SEAT_COLUMN_ROW_ID, seat.getSeatRow().getID());
         values.put(SEAT_COLUMN_SEAT_NR, seat.getSeatNr());
         values.put(SEAT_COLUMN_SEAT_VALUE, seat.getSeatValueInt());
         // Insert Seat
@@ -393,7 +393,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         // Create SeatRowInstance
         ContentValues values = new ContentValues();
-        values.put(SEAT_ROW_INSTANCE_COLUMN_ROW_ID, seatRowInstance.getSeatRow().getRowId());
+        values.put(SEAT_ROW_INSTANCE_COLUMN_ROW_ID, seatRowInstance.getSeatRow().getID());
         values.put(SEAT_ROW_INSTANCE_COLUMN_HALL_INSTANCE_ID, seatRowInstance.getHallInstance().getID());
         // Insert SeatRowInstance
         int genId = (int) database.insert(TABLE_SEAT_ROW_INSTANCE, null, values);
@@ -759,7 +759,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
             Ticket ticket = new Ticket();
-            ticket.setTicketId(cursor.getInt(cursor.getColumnIndex(TICKET_COLUMN_TICKET_ID)));
+            ticket.setID(cursor.getInt(cursor.getColumnIndex(TICKET_COLUMN_TICKET_ID)));
             ticket.setShowing(getShowing(cursor.getInt(cursor.getColumnIndex(TICKET_COLUMN_SHOWING_ID))));
             ticket.setSeatInstance(getSeatInstance(cursor.getInt(cursor.getColumnIndex(TICKET_COLUMN_SEAT_INSTANCE_ID))));
 
@@ -792,7 +792,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
                 // Get ticket and add
                 Ticket ticket = new Ticket();
-                ticket.setTicketId(cursor.getInt(cursor.getColumnIndex(TICKET_COLUMN_TICKET_ID)));
+                ticket.setID(cursor.getInt(cursor.getColumnIndex(TICKET_COLUMN_TICKET_ID)));
                 ticket.setSeatInstance(getSeatInstance(cursor.getInt(cursor.getColumnIndex(TICKET_COLUMN_SEAT_INSTANCE_ID))));
                 // Also add a showing with the showingId for this ticket (so the LocalShowingRepository can find the complete Showing)
                 Showing showing = new Showing();

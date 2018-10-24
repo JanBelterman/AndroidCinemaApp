@@ -25,7 +25,7 @@ public class UserMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.activity_user_hub);
+        setContentView(R.layout.activity_user_menu);
         // Set session user
         if (Session.user == null) Session.user = (User) getIntent().getSerializableExtra("USER");
         // Set view components
