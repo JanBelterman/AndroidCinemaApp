@@ -15,10 +15,9 @@ import android.widget.Toast;
 
 import com.cinema.avans.cinemaapp.R;
 import com.cinema.avans.cinemaapp.domain.User;
-import com.cinema.avans.cinemaapp.logic.register.RegisterCallback;
-import com.cinema.avans.cinemaapp.logic.register.RegisterManager;
+import com.cinema.avans.cinemaapp.logic.managers.RegisterManager;
 import com.cinema.avans.cinemaapp.presentation.login.LoginActivity;
-import com.cinema.avans.cinemaapp.presentation.user.activities.UserMenuActivity;
+import com.cinema.avans.cinemaapp.presentation.menu.screens.UserMenuActivity;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterCallback {
 
@@ -93,8 +92,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterCallb
     @Override
     public void login(User user) {
         stopLoader();
-        // TODO get tickets here or in menu screen
-        // Go to movie list screen for user
         Intent intent = new Intent(RegisterActivity.this, UserMenuActivity.class);
         intent.putExtra("USER", user);
         startActivity(intent);

@@ -15,10 +15,9 @@ import android.widget.Toast;
 
 import com.cinema.avans.cinemaapp.R;
 import com.cinema.avans.cinemaapp.domain.User;
-import com.cinema.avans.cinemaapp.logic.login.LoginCallback;
-import com.cinema.avans.cinemaapp.logic.login.LoginManager;
+import com.cinema.avans.cinemaapp.logic.managers.LoginManager;
 import com.cinema.avans.cinemaapp.presentation.register.RegisterActivity;
-import com.cinema.avans.cinemaapp.presentation.user.activities.UserMenuActivity;
+import com.cinema.avans.cinemaapp.presentation.menu.screens.UserMenuActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginCallback {
 
@@ -98,8 +97,6 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
     @Override
     public void login(User user) {
         stopLoader();
-        // TODO get tickets here or in menu screen
-        // Go to movie list screen for user
         Intent intent = new Intent(LoginActivity.this, UserMenuActivity.class);
         intent.putExtra("USER", user);
         startActivity(intent);

@@ -58,7 +58,7 @@ public class ShowingRepository {
         Showing showing = databaseManager.getShowing(showingId);
         // Also add HallInstance and Movie
         showing.setHallInstance(new HallInstanceRepository(databaseManager).getHallInstance(showing));
-        showing.setMovie(new MovieRepository(databaseManager).getMovie(showing.getMovie().getID()));
+        showing.setMovie(new LocalMovieRepository(databaseManager).getMovie(showing.getMovie().getID()));
 
         // Return Showing
         return showing;

@@ -34,11 +34,11 @@
         <activity android:name=".presentation.manager.CreateShowingSelectHallActivity" />
 
         <!-- User -->
-        <activity android:name=".presentation.user.activities.UserMenuActivity" />
-        <activity android:name=".presentation.user.activities.MovieDetailedActivity" />
-        <activity android:name=".presentation.user.activities.ShowingsActivity" />
-        <activity android:name=".presentation.user.activities.SeatSelectorActivity" />
-        <activity android:name=".presentation.user.activities.PayActivity" />
+        <activity android:name=".presentation.menu.screens.UserMenuActivity" />
+        <activity android:name=".presentation.menu.screens.MovieDetailedActivity" />
+        <activity android:name=".presentation.menu.screens.ShowingsActivity" />
+        <activity android:name=".presentation.menu.screens.SeatSelectorActivity" />
+        <activity android:name=".presentation.menu.screens.PayActivity" />
         <activity android:name=".presentation.manager.CreateShowingSelectDateActivity" />
     </application>
 
