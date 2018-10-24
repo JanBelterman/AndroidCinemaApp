@@ -3,12 +3,12 @@ package com.cinema.avans.cinemaapp.dataAccess.factories;
 import android.content.Context;
 
 import com.cinema.avans.cinemaapp.dataAccess.data.DatabaseManager;
-import com.cinema.avans.cinemaapp.dataAccess.localRepositories.HallRepository;
+import com.cinema.avans.cinemaapp.dataAccess.localRepositories.LocalHallRepository;
 import com.cinema.avans.cinemaapp.dataAccess.localRepositories.LocalMovieRepository;
-import com.cinema.avans.cinemaapp.dataAccess.localRepositories.SeatInstanceRepository;
-import com.cinema.avans.cinemaapp.dataAccess.localRepositories.ShowingRepository;
-import com.cinema.avans.cinemaapp.dataAccess.localRepositories.TicketRepository;
-import com.cinema.avans.cinemaapp.dataAccess.localRepositories.UserRepository;
+import com.cinema.avans.cinemaapp.dataAccess.localRepositories.LocalSeatInstanceRepository;
+import com.cinema.avans.cinemaapp.dataAccess.localRepositories.LocalShowingRepository;
+import com.cinema.avans.cinemaapp.dataAccess.localRepositories.LocalTicketRepository;
+import com.cinema.avans.cinemaapp.dataAccess.localRepositories.LocalUserRepository;
 
 /**
  * Created by JanBelterman on 29 March 2018
@@ -22,13 +22,13 @@ public class LocalRepositoryFactory {
         this.databaseManager = new DatabaseManager(context, "Cinema", null, 0);
     }
 
-    public HallRepository getHallRepository() {
-        return new HallRepository(databaseManager);
+    public LocalHallRepository getHallRepository() {
+        return new LocalHallRepository(databaseManager);
 
     }
 
-    public SeatInstanceRepository getSeatInstanceRepositoryFactory() {
-        return new SeatInstanceRepository(databaseManager);
+    public LocalSeatInstanceRepository getSeatInstanceRepositoryFactory() {
+        return new LocalSeatInstanceRepository(databaseManager);
 
     }
 
@@ -37,18 +37,18 @@ public class LocalRepositoryFactory {
 
     }
 
-    public ShowingRepository getShowingRepository() {
-        return new ShowingRepository(databaseManager);
+    public LocalShowingRepository getShowingRepository() {
+        return new LocalShowingRepository(databaseManager);
 
     }
 
-    public TicketRepository getTicketRepository() {
-        return new TicketRepository(databaseManager);
+    public LocalTicketRepository getTicketRepository() {
+        return new LocalTicketRepository(databaseManager);
 
     }
 
-    public UserRepository getUserRepository() {
-        return new UserRepository(databaseManager);
+    public LocalUserRepository getUserRepository() {
+        return new LocalUserRepository(databaseManager);
 
     }
 

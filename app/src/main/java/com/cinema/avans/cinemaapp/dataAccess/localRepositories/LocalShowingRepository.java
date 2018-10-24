@@ -10,11 +10,11 @@ import java.util.ArrayList;
  * Created by JanBelterman on 28 March 2018
  */
 
-public class ShowingRepository {
+public class LocalShowingRepository {
 
     private DatabaseManager databaseManager;
 
-    public ShowingRepository(DatabaseManager databaseManager) {
+    public LocalShowingRepository(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
 
     }
@@ -27,7 +27,7 @@ public class ShowingRepository {
         // Add HallInstance with repository (so RowInstances and SeatInstances are properly added
         // The repository also assigns the HallInstance its HallInstanceId, that wat Showing can be created properly
         // Otherwise the Showing would not refer to the correct HallInstance, because HallInstanceId would always be 0
-        new HallInstanceRepository(databaseManager).createHallInstance(showing.getHallInstance());
+        new LocalHallInstanceRepository(databaseManager).createHallInstance(showing.getHallInstance());
 
         // Create the Showing record itself
         databaseManager.createShowing(showing);
@@ -42,7 +42,7 @@ public class ShowingRepository {
 
             // Get HallInstance from repository (that one is complete with RowInstances and SeatInstances
             // Add movie (parameter)
-            showing.setHallInstance(new HallInstanceRepository(databaseManager).getHallInstance(showing));
+            showing.setHallInstance(new LocalHallInstanceRepository(databaseManager).getHallInstance(showing));
             showing.setMovie(movie);
 
         }
@@ -57,7 +57,7 @@ public class ShowingRepository {
         // Get Showing
         Showing showing = databaseManager.getShowing(showingId);
         // Also add HallInstance and Movie
-        showing.setHallInstance(new HallInstanceRepository(databaseManager).getHallInstance(showing));
+        showing.setHallInstance(new LocalHallInstanceRepository(databaseManager).getHallInstance(showing));
         showing.setMovie(new LocalMovieRepository(databaseManager).getMovie(showing.getMovie().getID()));
 
         // Return Showing

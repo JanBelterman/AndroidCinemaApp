@@ -11,7 +11,7 @@ import android.widget.ListView;
 import com.cinema.avans.cinemaapp.R;
 import com.cinema.avans.cinemaapp.Session;
 import com.cinema.avans.cinemaapp.domain.User;
-import com.cinema.avans.cinemaapp.presentation.menu.adapters.TicketAdapter;
+import com.cinema.avans.cinemaapp.presentation.menu.adapters.TicketListAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,7 +19,7 @@ import com.cinema.avans.cinemaapp.presentation.menu.adapters.TicketAdapter;
 public class UserMenuTicketsFragment extends Fragment {
 
     private User user;
-    private TicketAdapter ticketAdapter;
+    private TicketListAdapter ticketListAdapter;
     private ListView ticketListView;
 
     public UserMenuTicketsFragment() {
@@ -43,8 +43,8 @@ public class UserMenuTicketsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ticketListView = view.findViewById(R.id.userHubUserTicketsListView);
-        ticketAdapter = new TicketAdapter(getContext(), user.getTickets());
-        ticketListView.setAdapter(ticketAdapter);
+        ticketListAdapter = new TicketListAdapter(getContext(), user.getTickets());
+        ticketListView.setAdapter(ticketListAdapter);
 
     }
 

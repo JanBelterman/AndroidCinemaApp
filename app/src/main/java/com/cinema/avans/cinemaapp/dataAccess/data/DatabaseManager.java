@@ -650,7 +650,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         values.put(SHOWING_COLUMN_HALL_INSTANCE_ID, showing.getHallInstance().getID());
 
         int genId = (int) database.insert(TABLE_SHOWING, null, values);
-        showing.setShowingId(genId);
+        showing.setID(genId);
 
     }
     public ArrayList<Showing> getShowings(Movie movie) {
@@ -673,9 +673,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
                 // Create and add Showing
                 Showing showing = new Showing();
-                showing.setShowingId(cursor.getInt(cursor.getColumnIndex(SHOWING_COLUMN_SHOWING_ID)));
+                showing.setID(cursor.getInt(cursor.getColumnIndex(SHOWING_COLUMN_SHOWING_ID)));
                 showing.setDate(cursor.getString(cursor.getColumnIndex(SHOWING_COLUMN_DATE)));
-                // Set hallInstance its id (so the ShowingRepository can get the complete HallInstance)
+                // Set hallInstance its id (so the LocalShowingRepository can get the complete HallInstance)
                 HallInstance hallInstance = new HallInstance();
                 hallInstance.setID(cursor.getInt(cursor.getColumnIndex(SHOWING_COLUMN_HALL_INSTANCE_ID)));
                 showing.setHallInstance(hallInstance);
@@ -711,13 +711,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
 
             // Get values
-            showing.setShowingId(cursor.getInt(cursor.getColumnIndex(SHOWING_COLUMN_SHOWING_ID)));
+            showing.setID(cursor.getInt(cursor.getColumnIndex(SHOWING_COLUMN_SHOWING_ID)));
             showing.setDate(cursor.getString(cursor.getColumnIndex(SHOWING_COLUMN_DATE)));
-            // Set hallInstance its id (so the ShowingRepository can get the complete HallInstance)
+            // Set hallInstance its id (so the LocalShowingRepository can get the complete HallInstance)
             HallInstance hallInstance = new HallInstance();
             hallInstance.setID(cursor.getInt(cursor.getColumnIndex(SHOWING_COLUMN_HALL_INSTANCE_ID)));
             showing.setHallInstance(hallInstance);
-            // Set Movie its id (so the ShowingRepository can get the complete Movie)
+            // Set Movie its id (so the LocalShowingRepository can get the complete Movie)
             Movie movieToAdd = new Movie();
             movieToAdd.setID(cursor.getInt(cursor.getColumnIndex(SHOWING_COLUMN_MOVIE_ID)));
             showing.setMovie(movieToAdd);
@@ -736,7 +736,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(TICKET_COLUMN_SHOWING_ID, ticket.getShowing().getShowingId());
+        values.put(TICKET_COLUMN_SHOWING_ID, ticket.getShowing().getID());
         values.put(TICKET_COLUMN_SEAT_INSTANCE_ID, ticket.getSeatInstance().getSeatInstanceId());
         values.put(TICKET_COLUMN_USER_ID, ticket.getUser().getUsername());
 
@@ -794,9 +794,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 Ticket ticket = new Ticket();
                 ticket.setTicketId(cursor.getInt(cursor.getColumnIndex(TICKET_COLUMN_TICKET_ID)));
                 ticket.setSeatInstance(getSeatInstance(cursor.getInt(cursor.getColumnIndex(TICKET_COLUMN_SEAT_INSTANCE_ID))));
-                // Also add a showing with the showingId for this ticket (so the ShowingRepository can find the complete Showing)
+                // Also add a showing with the showingId for this ticket (so the LocalShowingRepository can find the complete Showing)
                 Showing showing = new Showing();
-                showing.setShowingId(cursor.getInt(cursor.getColumnIndex(TICKET_COLUMN_SHOWING_ID)));
+                showing.setID(cursor.getInt(cursor.getColumnIndex(TICKET_COLUMN_SHOWING_ID)));
                 ticket.setShowing(showing);
                 tickets.add(ticket);
 

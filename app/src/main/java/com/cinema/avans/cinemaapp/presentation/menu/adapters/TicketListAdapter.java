@@ -18,9 +18,9 @@ import java.util.ArrayList;
  * Created by JanBelterman on 04 April 2018
  */
 
-public class TicketAdapter extends ArrayAdapter<Ticket> {
+public class TicketListAdapter extends ArrayAdapter<Ticket> {
 
-    public TicketAdapter(Context context, ArrayList<Ticket> tickets) {
+    public TicketListAdapter(Context context, ArrayList<Ticket> tickets) {
         super(context, 0, tickets);
 
     }

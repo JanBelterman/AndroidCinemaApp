@@ -18,7 +18,7 @@ import com.cinema.avans.cinemaapp.domain.HallInstance;
 import com.cinema.avans.cinemaapp.domain.SeatInstance;
 import com.cinema.avans.cinemaapp.domain.User;
 import com.cinema.avans.cinemaapp.logic.additional.SeatSelector;
-import com.cinema.avans.cinemaapp.presentation.menu.adapters.SeatAdapter;
+import com.cinema.avans.cinemaapp.presentation.menu.adapters.SeatGridAdapter;
 
 /**
  * Created by JanBelterman on 28 March 2018
@@ -29,7 +29,7 @@ public class SeatSelectorActivity extends AppCompatActivity {
     private User user;
 
     private SeatSelector seatSelector;
-    private SeatAdapter seatAdapter;
+    private SeatGridAdapter seatGridAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -86,7 +86,7 @@ public class SeatSelectorActivity extends AppCompatActivity {
 
                 }
 
-                seatAdapter.notifyDataSetChanged();
+                seatGridAdapter.notifyDataSetChanged();
 
             }
             @Override
@@ -136,12 +136,12 @@ public class SeatSelectorActivity extends AppCompatActivity {
     private void setUpGridView() {
 
         // Adapter to display a cinemaHall in a gridView
-        seatAdapter = new SeatAdapter(this, seatSelector.getHallInstanceToShow());
+        seatGridAdapter = new SeatGridAdapter(this, seatSelector.getHallInstanceToShow());
 
         // GridView with properties
         GridView gridView = findViewById(R.id.selectorHallGridView);
         gridView.setNumColumns(seatSelector.getHallInstance().amountOfSeatsInARow());
-        gridView.setAdapter(seatAdapter);
+        gridView.setAdapter(seatGridAdapter);
 
         // OnItemClickListener to select a given seat
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -149,11 +149,11 @@ public class SeatSelectorActivity extends AppCompatActivity {
                                     int position, long id) {
 
                 // Get clicked seat from adapter
-                SeatInstance seatInstanceClicked = seatAdapter.getItem(position);
+                SeatInstance seatInstanceClicked = seatGridAdapter.getItem(position);
                 // Notify selector that seat has been clicked (also pass that seat)
                 seatSelector.seatClicked(seatInstanceClicked);
                 // Notify the adapter that data has changes (display updated hall)
-                seatAdapter.notifyDataSetChanged();
+                seatGridAdapter.notifyDataSetChanged();
 
             }
         });

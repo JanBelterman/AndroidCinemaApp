@@ -18,9 +18,9 @@ import java.util.ArrayList;
  * Created by JanBelterman on 29 March 2018
  */
 
-public class ShowingsAdapter extends ArrayAdapter<Showing> {
+public class ShowingsListAdapter extends ArrayAdapter<Showing> {
 
-    public ShowingsAdapter(Context context, ArrayList<Showing> showings) {
+    public ShowingsListAdapter(Context context, ArrayList<Showing> showings) {
         super(context, 0, showings);
 
     }

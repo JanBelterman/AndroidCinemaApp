@@ -7,11 +7,11 @@ import com.cinema.avans.cinemaapp.domain.User;
  * Created by JanBelterman on 29 March 2018
  */
 
-public class UserRepository {
+public class LocalUserRepository {
 
     private DatabaseManager databaseManager;
 
-    public UserRepository(DatabaseManager databaseManager) {
+    public LocalUserRepository(DatabaseManager databaseManager) {
 
         this.databaseManager = databaseManager;
 
@@ -27,7 +27,7 @@ public class UserRepository {
         // Get User
         User user = databaseManager.getUser(username);
         // Also get all of its tickets
-        user.setTickets(new TicketRepository(databaseManager).getTickets(user));
+        user.setTickets(new LocalTicketRepository(databaseManager).getTickets(user));
         // Return
         return user;
 

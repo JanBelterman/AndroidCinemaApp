@@ -10,11 +10,11 @@ import java.util.ArrayList;
  * Created by JanBelterman on 28 March 2018
  */
 
-public class HallRepository {
+public class LocalHallRepository {
 
     DatabaseManager databaseManager;
 
-    public HallRepository(DatabaseManager databaseManager) {
+    public LocalHallRepository(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
 
     }
@@ -27,7 +27,7 @@ public class HallRepository {
 
         // Also add the SeatRows within the Hall
         for (SeatRow seatRow : hall.getSeatRows()) {
-            new SeatRowRepository(databaseManager).createSeatRow(seatRow);
+            new LocalSeatRowRepository(databaseManager).createSeatRow(seatRow);
 
         }
 
@@ -41,7 +41,7 @@ public class HallRepository {
 
         // Getting the SeatRows and Seats
         for (Hall hall : halls) {
-            hall.setSeatRows(new SeatRowRepository(databaseManager).getSeatRows(hall));
+            hall.setSeatRows(new LocalSeatRowRepository(databaseManager).getSeatRows(hall));
 
         }
 

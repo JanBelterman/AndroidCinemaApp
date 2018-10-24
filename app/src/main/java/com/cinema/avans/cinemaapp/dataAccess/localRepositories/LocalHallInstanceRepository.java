@@ -9,11 +9,11 @@ import com.cinema.avans.cinemaapp.domain.HallInstance;
  * Created by JanBelterman on 28 March 2018
  */
 
-public class HallInstanceRepository {
+public class LocalHallInstanceRepository {
 
     private DatabaseManager databaseManager;
 
-    public HallInstanceRepository(DatabaseManager databaseManager) {
+    public LocalHallInstanceRepository(DatabaseManager databaseManager) {
 
         this.databaseManager = databaseManager;
 
@@ -30,7 +30,7 @@ public class HallInstanceRepository {
 
         // Add all SeatRow instances
         for (SeatRowInstance seatRowInstance : hallInstance.getSeatRowInstances()) {
-            new SeatRowInstanceRepository(databaseManager).createSeatRowInstance(seatRowInstance);
+            new LocalSeatRowInstanceRepository(databaseManager).createSeatRowInstance(seatRowInstance);
 
         }
 
@@ -41,7 +41,7 @@ public class HallInstanceRepository {
         // Get HallInstance
         HallInstance hallInstance = databaseManager.getHallInstance(showing.getHallInstance().getID());
         // Also get SeatRowInstances
-        hallInstance.setSeatRowInstances(new SeatRowInstanceRepository(databaseManager).getSeatRowInstances(hallInstance));
+        hallInstance.setSeatRowInstances(new LocalSeatRowInstanceRepository(databaseManager).getSeatRowInstances(hallInstance));
 
         // Return HallInstance
         return hallInstance;

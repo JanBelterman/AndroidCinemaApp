@@ -11,11 +11,11 @@ import java.util.ArrayList;
  * Created by JanBelterman on 28 March 2018
  */
 
-public class SeatRowInstanceRepository {
+public class LocalSeatRowInstanceRepository {
 
     private DatabaseManager databaseManager;
 
-    public SeatRowInstanceRepository(DatabaseManager databaseManager) {
+    public LocalSeatRowInstanceRepository(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
 
     }
@@ -27,7 +27,7 @@ public class SeatRowInstanceRepository {
 
         // Add the SeatInstances within the SeatRow
         for (SeatInstance seatInstance : seatRowInstance.getSeatInstances()) {
-            new SeatInstanceRepository(databaseManager).createSeatInstance(seatInstance);
+            new LocalSeatInstanceRepository(databaseManager).createSeatInstance(seatInstance);
 
         }
 
@@ -41,7 +41,7 @@ public class SeatRowInstanceRepository {
         // For each of the SeatRowInstances, also get the SeatInstances
         for (SeatRowInstance seatRowInstance : seatRowInstances) {
 
-            seatRowInstance.setSeatInstances(new SeatInstanceRepository(databaseManager).getSeatInstances(seatRowInstance));
+            seatRowInstance.setSeatInstances(new LocalSeatInstanceRepository(databaseManager).getSeatInstances(seatRowInstance));
             // Also add the HallInstance
             seatRowInstance.setHallInstance(hallInstance);
 

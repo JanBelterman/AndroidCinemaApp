@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.cinema.avans.cinemaapp.dataAccess.factories.LocalRepositoryFactory;
-import com.cinema.avans.cinemaapp.dataAccess.localRepositories.SeatInstanceRepository;
+import com.cinema.avans.cinemaapp.dataAccess.localRepositories.LocalSeatInstanceRepository;
 import com.cinema.avans.cinemaapp.domain.SeatInstance;
 import com.cinema.avans.cinemaapp.domain.SeatStatus;
 import com.cinema.avans.cinemaapp.domain.Ticket;
@@ -45,11 +45,11 @@ public class TicketBoughtManager extends AsyncTask<Ticket, Void, User> {
         }
 
         // Update Seats to RESERVED in database
-        SeatInstanceRepository seatInstanceRepository = localRepositoryFactory.getSeatInstanceRepositoryFactory();
+        LocalSeatInstanceRepository localSeatInstanceRepository = localRepositoryFactory.getSeatInstanceRepositoryFactory();
         for (SeatInstance seatInstance : seatInstances) {
             seatInstance.setStatus(SeatStatus.RESERVED);
         }
-        seatInstanceRepository.updateSeats(seatInstances);
+        localSeatInstanceRepository.updateSeats(seatInstances);
 
         //User from mainAct
         return localRepositoryFactory.getUserRepository().getUser(user.getUsername());

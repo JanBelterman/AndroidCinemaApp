@@ -16,14 +16,14 @@ import com.cinema.avans.cinemaapp.domain.SeatStatus;
  * Created by JanBelterman on 28 March 2018
  */
 
-public class SeatAdapter extends BaseAdapter {
+public class SeatGridAdapter extends BaseAdapter {
 
     private Context context;
     private HallInstance hallInstance;
 
     // Constructor, sets the context and hallItem
-    public SeatAdapter(Context context
-            ,HallInstance hallInstance) {
+    public SeatGridAdapter(Context context
+            , HallInstance hallInstance) {
 
         this.context = context;
         this.hallInstance = hallInstance;

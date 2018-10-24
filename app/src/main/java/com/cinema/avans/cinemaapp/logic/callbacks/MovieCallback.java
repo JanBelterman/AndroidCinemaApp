@@ -1,13 +1,13 @@
-package com.cinema.avans.cinemaapp.dataAccess.callbacks;
+package com.cinema.avans.cinemaapp.logic.callbacks;
 
 import com.cinema.avans.cinemaapp.domain.Movie;
 
 /**
  * Created by JanBelterman on 04 July 2018
  */
-public interface MovieGottenCallback {
+public interface MovieCallback {
 
     void movieGotten(Movie movie);
-    void showError(String error);
+    void errorGotten(String error);
 
 }

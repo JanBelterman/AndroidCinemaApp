@@ -10,11 +10,11 @@ import java.util.ArrayList;
  * Created by JanBelterman on 28 March 2018
  */
 
-public class SeatInstanceRepository {
+public class LocalSeatInstanceRepository {
 
     private DatabaseManager databaseManager;
 
-    public SeatInstanceRepository(DatabaseManager databaseManager) {
+    public LocalSeatInstanceRepository(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
 
     }

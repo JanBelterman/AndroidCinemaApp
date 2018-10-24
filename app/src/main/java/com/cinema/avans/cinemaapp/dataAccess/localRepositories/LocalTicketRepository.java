@@ -10,11 +10,11 @@ import java.util.ArrayList;
  * Created by JanBelterman on 29 March 2018
  */
 
-public class TicketRepository {
+public class LocalTicketRepository {
 
     private DatabaseManager databaseManager;
 
-    public TicketRepository(DatabaseManager databaseManager) {
+    public LocalTicketRepository(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
 
     }
@@ -32,7 +32,7 @@ public class TicketRepository {
         // Also add user and movie
         for (Ticket ticket : tickets) {
             ticket.setUser(user);
-            ticket.setShowing(new ShowingRepository(databaseManager).getShowing(ticket.getShowing().getShowingId()));
+            ticket.setShowing(new LocalShowingRepository(databaseManager).getShowing(ticket.getShowing().getID()));
 
         }
 

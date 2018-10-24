@@ -53,7 +53,7 @@ public class Ticket implements Serializable {
     public String toString() {
 
         return "TicketId: " + ticketId + "\n"
-                + "ShowingId: " + showing.getShowingId() + "\n"
+                + "ShowingId: " + showing.getID() + "\n"
                 + "SeatInstanceId: " + seatInstance.getSeatInstanceId();
 
     }
