@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cinema.avans.cinemaapp.R;
+import com.cinema.avans.cinemaapp.Session;
 import com.cinema.avans.cinemaapp.domain.User;
 import com.cinema.avans.cinemaapp.logic.managers.RegisterManager;
 import com.cinema.avans.cinemaapp.presentation.login.LoginActivity;
@@ -91,10 +92,10 @@ public class RegisterActivity extends AppCompatActivity implements RegisterCallb
 
     @Override
     public void login(User user) {
-        stopLoader();
+        Session.user = user;
         Intent intent = new Intent(RegisterActivity.this, UserMenuActivity.class);
-        intent.putExtra("USER", user);
         startActivity(intent);
+        stopLoader();
     }
 
     @Override

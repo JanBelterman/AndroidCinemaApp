@@ -32,12 +32,10 @@ public class LoginManager {
     }
 
     public void login(final String username, final String password) {
-
         // Request body
         Map<String, String> body = new HashMap<>();
         body.put("username", username);
         body.put("password", password);
-
         // Sending request
         String url = "https://cinema-app-api.herokuapp.com/api/user/login";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
@@ -63,11 +61,13 @@ public class LoginManager {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                // Get error message
-                Log.i("Error:", error.toString());
+                error.printStackTrace();
                 String message = "Failed to login";
-                switch(error.networkResponse.statusCode) {
-                    case 401: message = "Invalid credentials";
+                if (error.networkResponse != null) {
+                    switch (error.networkResponse.statusCode) {
+                        case 401:
+                            message = "Invalid credentials";
+                    }
                 }
                 loginCallback.falseLogin(message);
             }
@@ -79,9 +79,7 @@ public class LoginManager {
                 return headers;
             }
         };
-
         requestQueue.add(jsonObjectRequest);
-
     }
 
 }

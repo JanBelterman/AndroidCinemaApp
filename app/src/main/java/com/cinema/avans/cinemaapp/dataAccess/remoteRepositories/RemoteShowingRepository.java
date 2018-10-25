@@ -63,7 +63,7 @@ public class RemoteShowingRepository {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("UserMoviesFragment", "Error getting movies: " + error);
+                error.printStackTrace();
                 callback.error("Error getting movies");
             }
         }){

@@ -65,16 +65,17 @@ public class RegisterManager {
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Get error message
-                        Log.i("Error:", error.toString());
+                        error.printStackTrace();
                         String message = "Failed to register";
-                        switch(error.networkResponse.statusCode) {
-                            case 405:
-                                try {
-                                    message = new String(error.networkResponse.data, "UTF-8");
-                                } catch (UnsupportedEncodingException e) {
-                                    message = "User already exists";
-                                }
+                        if (error.networkResponse != null) {
+                            switch (error.networkResponse.statusCode) {
+                                case 405:
+                                    try {
+                                        message = new String(error.networkResponse.data, "UTF-8");
+                                    } catch (UnsupportedEncodingException e) {
+                                        message = "User already exists";
+                                    }
+                            }
                         }
                         registerCallback.falseRegister(message);
                     }

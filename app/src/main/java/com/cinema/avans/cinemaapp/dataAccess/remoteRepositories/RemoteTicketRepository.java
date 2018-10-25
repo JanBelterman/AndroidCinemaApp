@@ -3,9 +3,11 @@ package com.cinema.avans.cinemaapp.dataAccess.remoteRepositories;
 import android.app.Activity;
 import android.util.Log;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -46,7 +48,6 @@ public class RemoteTicketRepository {
             Map<String, String> body = new HashMap<>();
             body.put("showingID", String.valueOf(ticket.getShowing().getID()));
             body.put("seatInstanceID", String.valueOf(ticket.getSeatInstance().getID()));
-
             // Sending request
             String url = "https://cinema-app-api.herokuapp.com/api/ticket";
             RequestQueue requestQueue = Volley.newRequestQueue(activity);
@@ -67,8 +68,7 @@ public class RemoteTicketRepository {
                             }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            // Get error message
-                            Log.i("Error:", error.toString());
+                            error.printStackTrace();
                             callback.error("Failed to purchase");
                         }
                     }) {
@@ -80,7 +80,6 @@ public class RemoteTicketRepository {
                             return headers;
                         }
                     };
-
             requestQueue.add(jsonObjectRequest);
         }
     }
@@ -88,12 +87,13 @@ public class RemoteTicketRepository {
     public void getAllForUser() {
         String url = "https://cinema-app-api.herokuapp.com/api/ticket";
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
-        Request stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        Request getAllTicketsRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     // Get tickets
                     JSONArray apiTickets = new JSONArray(response);
+                    if (apiTickets.length() == 0) ticketCallback.error("User has no tickets");
                     for (int i = 0; i < apiTickets.length(); i++) {
                         // json parse
                         JSONObject apiTicket = apiTickets.getJSONObject(i);
@@ -127,7 +127,7 @@ public class RemoteTicketRepository {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("Ticket repo", "Error getting tickets: " + error);
+                error.printStackTrace();
                 ticketCallback.error("Error getting tickets");
             }
         }){
@@ -137,7 +137,11 @@ public class RemoteTicketRepository {
                 headers.put("x-auth-token", Session.user.getToken());
                 return headers;
             }};
-        requestQueue.add(stringRequest);
+        getAllTicketsRequest.setRetryPolicy(new DefaultRetryPolicy(
+                50000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        requestQueue.add(getAllTicketsRequest);
     }
 
 }

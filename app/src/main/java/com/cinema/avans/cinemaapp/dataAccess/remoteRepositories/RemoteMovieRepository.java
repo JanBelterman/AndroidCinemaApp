@@ -47,6 +47,7 @@ public class RemoteMovieRepository {
                 try {
                     // Get movies
                     JSONArray moviesFromApi = new JSONArray(response);
+                    if (moviesFromApi.length() == 0) callback.errorGotten("No movies");
                     for (int i = 0; i < moviesFromApi.length(); i++) {
                         // Get movie
                         JSONObject movieFromApi = moviesFromApi.getJSONObject(i);
@@ -73,7 +74,7 @@ public class RemoteMovieRepository {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("UserMoviesFragment", "Error getting movies: " + error);
+                error.printStackTrace();
                 callback.errorGotten("Error getting movies");
             }
         }){
