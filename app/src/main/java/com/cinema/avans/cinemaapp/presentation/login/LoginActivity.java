@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cinema.avans.cinemaapp.R;
+import com.cinema.avans.cinemaapp.Session;
 import com.cinema.avans.cinemaapp.domain.User;
 import com.cinema.avans.cinemaapp.logic.managers.LoginManager;
 import com.cinema.avans.cinemaapp.presentation.register.RegisterActivity;
@@ -59,12 +60,9 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 hideKeyboard();
-
                 String username = String.valueOf(usernameInput.getText());
                 String password = String.valueOf(passwordInput.getText());
-
                 if (username.isEmpty()) {
                     Toast.makeText(getApplicationContext(), R.string.fillUsernameFirst, Toast.LENGTH_LONG).show();
                     return;
@@ -72,11 +70,8 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
                     Toast.makeText(getApplicationContext(), R.string.fillPasswordFirst, Toast.LENGTH_LONG).show();
                     return;
                 }
-
                 startLoader();
-
                 loginManager.login(username, password);
-
             }
         });
     }
@@ -96,10 +91,10 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
 
     @Override
     public void login(User user) {
-        stopLoader();
+        Session.user = user;
         Intent intent = new Intent(LoginActivity.this, UserMenuActivity.class);
-        intent.putExtra("USER", user);
         startActivity(intent);
+        stopLoader();
     }
 
     @Override

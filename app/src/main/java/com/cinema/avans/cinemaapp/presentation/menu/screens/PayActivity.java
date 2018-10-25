@@ -21,6 +21,8 @@ import com.cinema.avans.cinemaapp.logic.callbacks.PaymentCallback;
 
 import java.util.ArrayList;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+
 /**
  * Created by JanBelterman on 03 April 2018
  */
@@ -32,13 +34,13 @@ public class PayActivity extends AppCompatActivity implements PaymentCallback {
     private ArrayList<SeatInstance> seatInstancesForUser;
     private Showing showing;
 
-    // TODO counter till all tickets have responded
     private int counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
+        counter = 0;
         seatInstancesForUser = (ArrayList<SeatInstance>) getIntent().getSerializableExtra("SELECTED_SEATS");
         showing = (Showing) getIntent().getSerializableExtra("SHOWING");
         ticketRepository = new RemoteTicketRepository(this, this);
@@ -65,11 +67,14 @@ public class PayActivity extends AppCompatActivity implements PaymentCallback {
 
     @Override
     public void success() {
-        stopLoader();
-        Intent intent = new Intent(PayActivity.this, UserMenuActivity.class);
-        Toast.makeText(getApplicationContext(), "Tickets payed", Toast.LENGTH_LONG).show();
-        startActivity(intent);
-        overridePendingTransition(R.anim.fade_out, R.anim.fade_in);
+        counter++;
+        if (counter == seatInstancesForUser.size()) {
+            stopLoader();
+            Toast.makeText(getApplicationContext(), "Tickets payed", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(PayActivity.this, UserMenuActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -91,7 +96,7 @@ public class PayActivity extends AppCompatActivity implements PaymentCallback {
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.enter_from_left, R.anim.exit_to_right);
+        overridePendingTransition(0, 0);
     }
 
 }

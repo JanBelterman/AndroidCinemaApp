@@ -78,8 +78,8 @@ public class RemoteHallInstanceRepository {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("Hall instance repo", "Error getting hall instance: " + error);
-                callback.error("Error getting hall");
+                error.printStackTrace();
+                callback.error("Something went wrong");
             }
         }){
             @Override
