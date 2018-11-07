@@ -3,6 +3,7 @@ package com.cinema.avans.cinemaapp.logic.managers;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -41,7 +42,7 @@ public class RegisterManager {
         body.put("password", password);
 
         // Sending request
-        String url = "https://cinema-app-api.herokuapp.com/api/user/register";
+        String url = "https://cinema-app-api.herokuapp.com/api/users";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjectRequest =
                 new JsonObjectRequest(
@@ -55,7 +56,6 @@ public class RegisterManager {
                                     // Get user
                                     User user = new User();
                                     user.setUsername(response.getString("username"));
-                                    user.setPassword(response.getString("password"));
                                     user.setToken(response.getString("token"));
                                     registerCallback.login(user);
                                 } catch (Exception e) {
@@ -69,7 +69,7 @@ public class RegisterManager {
                         String message = "Failed to register";
                         if (error.networkResponse != null) {
                             switch (error.networkResponse.statusCode) {
-                                case 405:
+                                case 400:
                                     try {
                                         message = new String(error.networkResponse.data, "UTF-8");
                                     } catch (UnsupportedEncodingException e) {
@@ -87,7 +87,10 @@ public class RegisterManager {
                         return headers;
                     }
                 };
-
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                50000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(jsonObjectRequest);
 
     }

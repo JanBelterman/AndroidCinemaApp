@@ -3,6 +3,7 @@ package com.cinema.avans.cinemaapp.dataAccess.remoteRepositories;
 import android.app.Activity;
 import android.util.Log;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -36,7 +37,7 @@ public class RemoteShowingRepository {
     }
 
     public void getForMovie(final Movie movie) {
-        String url = "https://cinema-app-api.herokuapp.com/api/showing/" + movie.getID();
+        String url = "https://cinema-app-api.herokuapp.com/api/showings/" + movie.getID();
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
         Request stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -73,6 +74,10 @@ public class RemoteShowingRepository {
                 headers.put("x-auth-token", Session.user.getToken());
                 return headers;
             }};
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                50000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(stringRequest);
     }
 

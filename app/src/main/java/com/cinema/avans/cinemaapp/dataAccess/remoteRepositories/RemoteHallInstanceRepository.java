@@ -3,6 +3,7 @@ package com.cinema.avans.cinemaapp.dataAccess.remoteRepositories;
 import android.app.Activity;
 import android.util.Log;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -37,7 +38,7 @@ public class RemoteHallInstanceRepository {
     }
 
     public void getForShowing(Showing showing) {
-        String url = "https://cinema-app-api.herokuapp.com/api/hallInstance/" + showing.getHallInstance().getID();
+        String url = "https://cinema-app-api.herokuapp.com/api/hallInstances/" + showing.getHallInstance().getID();
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
         Request stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -88,6 +89,10 @@ public class RemoteHallInstanceRepository {
                 headers.put("x-auth-token", Session.user.getToken());
                 return headers;
             }};
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                50000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(stringRequest);
     }
 

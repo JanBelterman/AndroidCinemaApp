@@ -49,7 +49,7 @@ public class RemoteTicketRepository {
             body.put("showingID", String.valueOf(ticket.getShowing().getID()));
             body.put("seatInstanceID", String.valueOf(ticket.getSeatInstance().getID()));
             // Sending request
-            String url = "https://cinema-app-api.herokuapp.com/api/ticket";
+            String url = "https://cinema-app-api.herokuapp.com/api/tickets";
             RequestQueue requestQueue = Volley.newRequestQueue(activity);
             JsonObjectRequest jsonObjectRequest =
                     new JsonObjectRequest(
@@ -80,12 +80,16 @@ public class RemoteTicketRepository {
                             return headers;
                         }
                     };
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    50000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             requestQueue.add(jsonObjectRequest);
         }
     }
 
     public void getAllForUser() {
-        String url = "https://cinema-app-api.herokuapp.com/api/ticket";
+        String url = "https://cinema-app-api.herokuapp.com/api/tickets";
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
         Request getAllTicketsRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
