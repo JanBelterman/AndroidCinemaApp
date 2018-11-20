@@ -3,6 +3,7 @@ package com.cinema.avans.cinemaapp.logic.managers;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -37,7 +38,7 @@ public class LoginManager {
         body.put("username", username);
         body.put("password", password);
         // Sending request
-        String url = "https://cinema-app-api.herokuapp.com/api/user/login";
+        String url = "https://cinema-app-api.herokuapp.com/api/auth";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjectRequest =
                 new JsonObjectRequest(
@@ -51,7 +52,6 @@ public class LoginManager {
                     // Get user
                     User user = new User();
                     user.setUsername(response.getString("username"));
-                    user.setPassword(response.getString("password"));
                     user.setToken(response.getString("token"));
                     loginCallback.login(user);
                 } catch (Exception e) {
@@ -65,7 +65,7 @@ public class LoginManager {
                 String message = "Failed to login";
                 if (error.networkResponse != null) {
                     switch (error.networkResponse.statusCode) {
-                        case 401:
+                        case 400:
                             message = "Invalid credentials";
                     }
                 }
@@ -79,6 +79,10 @@ public class LoginManager {
                 return headers;
             }
         };
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                50000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(jsonObjectRequest);
     }
 
